@@ -8,8 +8,9 @@
 }
 
 :root {
-  --main-bg: #fff;
-  --secondary-bg: #e8e7e3;
-  --item-color: #ad8330;
-  --item-hover: #977124;
+  --CLR-bg-main: #fff;
+  --CLR-bg-secondary: #e8e7e3;
+  --CLR-text: #1a2428;
+  --CLR-item: #ad8330;
+  --CLR-item-hover: #977124;
 }
