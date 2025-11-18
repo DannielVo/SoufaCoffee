@@ -1,0 +1,120 @@
+import black_coffee from "./ca-phe-den.jpg";
+import milk_coffee from "./ca-phe-sua.jpg";
+import white_coffee from "./bac-xiu.jpg";
+import salted_coffee from "./ca-phe-muoi.jpg";
+import matcha_latte from "./matcha-latte.png";
+import chocolate from "./chocolate.jpg";
+import peach_tea from "./tra-dao.jpg";
+import lemon_tea from "./tra-chanh.jpg";
+import orange_juice from "./Orange-Juice.jpg";
+import pineapple_juice from "./pineapple-juice.jpg";
+
+export const PRODUCT_IMGS = [
+  black_coffee,
+  milk_coffee,
+  white_coffee,
+  salted_coffee,
+  matcha_latte,
+  chocolate,
+  peach_tea,
+  lemon_tea,
+  orange_juice,
+  pineapple_juice,
+];
+
+export const PRODUCTS = [
+  {
+    id: 1,
+    name: "Black Coffee",
+    price: 30000,
+    remaining: 12,
+    img: black_coffee,
+  },
+  {
+    id: 2,
+    name: "Milk Coffee",
+    price: 35000,
+    remaining: 7,
+    img: milk_coffee,
+  },
+  {
+    id: 3,
+    name: "White Coffee",
+    price: 45000,
+    remaining: 3,
+    img: white_coffee,
+  },
+  {
+    id: 4,
+    name: "Salted Coffee",
+    price: 45000,
+    remaining: 3,
+    img: salted_coffee,
+  },
+  {
+    id: 5,
+    name: "Matcha Latte",
+    price: 49000,
+    remaining: 10,
+    img: matcha_latte,
+  },
+  {
+    id: 6,
+    name: "Chocolate",
+    price: 42000,
+    remaining: 6,
+    img: chocolate,
+  },
+  {
+    id: 7,
+    name: "Peach Tea",
+    price: 38000,
+    remaining: 14,
+    img: peach_tea,
+  },
+  {
+    id: 8,
+    name: "Lemon Tea",
+    price: 35000,
+    remaining: 2,
+    img: lemon_tea,
+  },
+  {
+    id: 9,
+    name: "Orange Juice",
+    price: 40000,
+    remaining: 0,
+    img: orange_juice,
+  },
+  {
+    id: 10,
+    name: "Pineapple Juice",
+    price: 42000,
+    remaining: 9,
+    img: pineapple_juice,
+  },
+];
+
+export const ORDER_SUMMARY = [
+  {
+    id: 1,
+    name: "White Coffee",
+    price: 45000,
+    quantity: 1,
+    remaining: 5,
+  },
+  {
+    id: 2,
+    name: "Chocolate",
+    price: 42000,
+    quantity: 2,
+    remaining: 3,
+  },
+  {
+    id: 3,
+    name: "Peach Tea",
+    price: 38000,
+    quantity: 1,
+    remaining: 1,
+  },
+];
