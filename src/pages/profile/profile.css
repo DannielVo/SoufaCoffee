@@ -1,0 +1,94 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: var(--CLR-bg-fourth);
+}
+
+.user-profile-container {
+  display: flex;
+  background-color: var(--CLR-bg-main);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto 40px;
+}
+
+.user-avatar {
+  background-color: #e9ecef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  width: 50%;
+}
+
+.user-avatar i {
+  font-size: 80px;
+  color: var(--CLR-text);
+  border-radius: 50%;
+  border: 5px solid var(--CLR-text);
+  padding: 20px;
+}
+
+.user-info {
+  padding: 30px;
+  width: 60%;
+}
+
+.user-info h2 {
+  color: var(--CLR-text);
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.profile-form-group {
+  margin-bottom: 15px;
+}
+
+.profile-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--CLR-text);
+  font-weight: 500;
+}
+
+.profile-form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.profile-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-btn {
+  margin-right: 15px;
+}
+
+.update-btn,
+.cancel-btn {
+  background: var(--CLR-item);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 90%;
+  transition: background-color 0.3s;
+}
+
+.update-btn:hover,
+.cancel-btn:hover {
+  background: var(--CLR-item-hover);
+}
