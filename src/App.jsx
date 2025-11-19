@@ -12,6 +12,7 @@ import CashierLayout from "./layouts/CashierLayout";
 import ManagerLayout from "./layouts/ManagerLayout";
 import BaristaLayout from "./layouts/BaristaLayout";
 import PreparationList from "./pages/preparationList/PreparationList";
+import OrderList from "./pages/orderList/OrderList";
 
 const App = () => {
   const plainPages = [
@@ -63,6 +64,7 @@ const App = () => {
         <Route element={<CashierLayout />}>
           <Route path="/cashier/home" element={<HomePg />} />
           <Route path="/cashier/payment" element={<PaymentPg />} />
+          <Route path="/cashier/orders" element={<OrderList />} />
           <Route path="/cashier/profile" element={<Profile />} />
         </Route>
 

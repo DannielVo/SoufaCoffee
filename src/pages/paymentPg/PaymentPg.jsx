@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./paymentPg.css";
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { ORDER_PAYMENT } from "../../assets/dummyDB";
 
 const PaymentPg = () => {
   const navigate = useNavigate();
@@ -9,13 +10,7 @@ const PaymentPg = () => {
   const [cashReceived, setCashReceived] = useState("");
   const orderId = 101;
 
-  // Dummy order items
-  const orderItems = [
-    { id: 1, name: "Black Coffee", price: 30000, qty: 2 },
-    { id: 2, name: "Milk Coffee", price: 35000, qty: 1 },
-  ];
-
-  const total = orderItems.reduce(
+  const total = ORDER_PAYMENT.reduce(
     (sum, item) => sum + item.price * item.qty,
     0
   );
@@ -46,7 +41,7 @@ const PaymentPg = () => {
             <div>Total</div>
           </div>
 
-          {orderItems.map((item, index) => (
+          {ORDER_PAYMENT.map((item, index) => (
             <div className="order-summary-grid row" key={item.id}>
               <div>{index + 1}</div>
               <div>{item.name}</div>

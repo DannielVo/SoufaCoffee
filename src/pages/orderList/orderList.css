@@ -1,0 +1,90 @@
+.order-list-wrapper {
+  padding-block: 20px;
+  background-color: var(--CLR-bg-fourth);
+  min-height: 100vh;
+}
+
+.order-list-title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.order-list-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* GRID layout */
+.order-grid {
+  display: grid;
+  grid-template-columns: 150px 220px 260px 280px 260px 100px;
+  padding: 12px 0;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 15px;
+}
+
+.order-grid.header {
+  font-weight: 600;
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.order-grid.item:hover {
+  background: #fafafa;
+}
+
+/* Status colors */
+.status {
+  width: fit-content;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: var(--CLR-pending);
+}
+
+.status.paid {
+  background: #d1f7d6;
+  color: var(--CLR-success);
+}
+
+.status.failed {
+  background: #ffd6d6;
+  color: var(--CLR-failed);
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon.detail {
+  background: #e7f1ff;
+  color: #1a73e8;
+}
+
+.btn-icon.edit {
+  background: #fff3e6;
+  color: #d97706;
+}
+
+.btn-icon:hover {
+  opacity: 0.8;
+}

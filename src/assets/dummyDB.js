@@ -118,3 +118,47 @@ export const ORDER_SUMMARY = [
     remaining: 1,
   },
 ];
+
+export const ORDER_PAYMENT = [
+  { id: 1, name: "Black Coffee", price: 30000, qty: 2 },
+  { id: 2, name: "Milk Coffee", price: 35000, qty: 1 },
+];
+
+export const ORDER_LIST = [
+  {
+    id: 101,
+    total: 95000,
+    date: "2025-01-05 10:45",
+    status: "Pending",
+  },
+  {
+    id: 102,
+    total: 155000,
+    date: "2025-01-05 11:10",
+    status: "Paid",
+  },
+  {
+    id: 103,
+    total: 45000,
+    date: "2025-01-05 11:30",
+    status: "Paid",
+  },
+  {
+    id: 104,
+    total: 45000,
+    date: "2025-12-23 11:30",
+    status: "Paid",
+  },
+  {
+    id: 105,
+    total: 45000,
+    date: "2025-08-10 11:30",
+    status: "Failed",
+  },
+  {
+    id: 106,
+    total: 45000,
+    date: "2025-02-22 11:30",
+    status: "Paid",
+  },
+];

@@ -15,4 +15,7 @@
   --CLR-text: #1a2428;
   --CLR-item: #ad8330;
   --CLR-item-hover: #977124;
+  --CLR-success: #2b8a3e;
+  --CLR-failed: #b82121;
+  --CLR-pending: #b58b00;
 }
