@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./paymentPg.css";
 import { assets } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const PaymentPg = () => {
+  const navigate = useNavigate();
   const [method, setMethod] = useState("cash");
   const [cashReceived, setCashReceived] = useState("");
   const orderId = 101;
@@ -18,7 +20,7 @@ const PaymentPg = () => {
     0
   );
 
-  const cashReturned = cashReceived ? cashReceived - total : "";
+  const cashReturned = cashReceived ? Number(cashReceived) - total : "";
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -30,14 +32,11 @@ const PaymentPg = () => {
 
   return (
     <div className="payment-wrapper left-right">
-      {/* TITLE */}
       <h1 className="page-title">Payment Information</h1>
-
-      {/* ORDER ID */}
       <p className="order-id">Order ID: #{orderId}</p>
 
       <div className="payment-content">
-        {/* LEFT COLUMN — ORDER SUMMARY */}
+        {/* ORDER SUMMARY */}
         <div className="order-summary-section">
           <div className="order-summary-grid header">
             <div>No.</div>
@@ -63,7 +62,7 @@ const PaymentPg = () => {
           </div>
         </div>
 
-        {/* RIGHT COLUMN — PAYMENT METHOD */}
+        {/* PAYMENT METHOD */}
         <div className="payment-section">
           <h2 className="section-title">Payment Method</h2>
 
@@ -90,7 +89,7 @@ const PaymentPg = () => {
                   <input
                     type="number"
                     value={cashReceived}
-                    onChange={(e) => setCashReceived(Number(e.target.value))}
+                    onChange={(e) => setCashReceived(e.target.value)}
                     placeholder="Enter customer's cash"
                   />
                 </div>
@@ -99,7 +98,7 @@ const PaymentPg = () => {
                   <label>Cash returned:</label>
                   <input
                     type="text"
-                    value={cashReceived ? formatPrice(cashReturned) : "0đ"}
+                    value={cashReceived ? formatPrice(cashReturned) : "0 VND"}
                     disabled
                   />
                 </div>
@@ -117,7 +116,12 @@ const PaymentPg = () => {
 
           <div className="payment-actions">
             <button className="btn-confirm">Confirm</button>
-            <button className="btn-update-order">Update order</button>
+            <button
+              className="btn-update-order"
+              onClick={() => navigate("/cashier/home")}
+            >
+              Update order
+            </button>
           </div>
         </div>
       </div>
