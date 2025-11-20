@@ -14,6 +14,7 @@ import BaristaLayout from "./layouts/BaristaLayout";
 import PreparationList from "./pages/preparationList/PreparationList";
 import OrderList from "./pages/orderList/OrderList";
 import WareHouse from "./components/wareHouse/WareHouse";
+import IngredientList from "./pages/ingredientList/IngredientList";
 
 const App = () => {
   const plainPages = [
@@ -76,6 +77,7 @@ const App = () => {
         <Route element={<BaristaLayout />}>
           <Route path="/barista/preparation" element={<PreparationList />} />
           <Route path="/barista/profile" element={<Profile />} />
+          <Route path="/barista/ingrdients" element={<IngredientList />} />
         </Route>
 
         <Route element={<ManagerLayout />}>
