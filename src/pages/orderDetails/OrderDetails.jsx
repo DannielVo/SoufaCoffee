@@ -78,9 +78,10 @@ const OrderDetails = ({ order, onBack }) => {
 
         <div className="details-table">
           <div className="table-header">
+            <div>No.</div>
             <div>Payment Method</div>
-            <div>Cash Given</div>
             <div>Amount</div>
+            <div>Cash Given</div>
             <div>Status</div>
             <div>Type</div>
             <div>Date</div>
@@ -88,9 +89,10 @@ const OrderDetails = ({ order, onBack }) => {
 
           {TRANSACTIONS.map((t, index) => (
             <div className="table-row" key={`transaction${t.id}`}>
+              <div>{index + 1}</div>
               <div>{t.method}</div>
-              <div>{t.cash_given ? formatPrice(t.cash_given) : "-"}</div>
               <div>{formatPrice(t.amount)}</div>
+              <div>{t.cash_given ? formatPrice(t.cash_given) : "-"}</div>
               <div className={`status-badge small ${t.status.toLowerCase()}`}>
                 {t.status}
               </div>

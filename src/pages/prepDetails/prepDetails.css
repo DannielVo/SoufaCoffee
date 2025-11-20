@@ -1,10 +1,10 @@
-.order-details-container {
+.prep-details-container {
   padding-block: 20px;
   background-color: var(--CLR-bg-fourth);
   min-height: 100vh;
 }
 
-.order-details-header {
+.prep-details-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@
 
 /* ================= GENERAL INFO ================ */
 .general-info {
-  background: #fff;
+  background: var(--CLR-bg-main);
   padding: 18px;
   border-radius: 8px;
   margin-bottom: 25px;
@@ -66,19 +66,18 @@
 }
 
 .status-badge.pending {
-  background: #ffe9b3;
-  color: #b37b00;
+  background: #fff3cd;
+  color: var(--CLR-pending);
 }
 
-.status-badge.paid,
-.status-badge.success {
-  background: #d6f5d6;
-  color: #117a23;
+.status-badge.done {
+  background: #ddfce1;
+  color: var(--CLR-success);
 }
 
-.status-badge.failed {
-  background: #ffd6d6;
-  color: #b30000;
+.status-badge.in-progress {
+  background: #e7f1ff;
+  color: var(--CLR-doing);
 }
 
 .status-badge.small {
