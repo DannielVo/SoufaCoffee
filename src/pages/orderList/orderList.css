@@ -38,8 +38,9 @@
 .status {
   width: fit-content;
   font-weight: 600;
-  padding: 4px 8px;
+  padding: 3px 10px;
   border-radius: 6px;
+  font-size: 14px;
 }
 
 .status.pending {
@@ -77,7 +78,7 @@
 
 .btn-icon.detail {
   background: #e7f1ff;
-  color: #1a73e8;
+  color: var(--CLR-doing);
 }
 
 .btn-icon.edit {

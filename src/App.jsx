@@ -75,15 +75,16 @@ const App = () => {
 
         <Route element={<BaristaLayout />}>
           <Route path="/barista/preparation" element={<PreparationList />} />
+          <Route path="/barista/profile" element={<Profile />} />
         </Route>
 
         <Route element={<ManagerLayout />}>
           <Route path="/manager/dashboard" element={<Dashboard />} />
           <Route path="/manager/profile" element={<Profile />} />
-          <Route
+          {/* <Route
             path="/manager/warehouse"
             element={<WareHouse isManager={true} />}
-          />
+          /> */}
         </Route>
 
         {plainPages.map((item, index) => (

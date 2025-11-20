@@ -231,3 +231,24 @@ export const WAREHOUSE_DATA = [
     last_edit: "Tran B",
   },
 ];
+
+export const PREP_LIST = [
+  {
+    id: 101,
+    status: "Pending",
+    created_at: "2025-01-05 10:45",
+    staff: "Nguyen Van A",
+  },
+  {
+    id: 102,
+    status: "Done",
+    created_at: "2025-01-05 10:45",
+    staff: "Nguyen Van A",
+  },
+  {
+    id: 103,
+    status: "In-progress",
+    created_at: "2025-01-05 10:45",
+    staff: "Nguyen Van A",
+  },
+];
