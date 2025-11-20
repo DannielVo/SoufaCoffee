@@ -48,12 +48,12 @@
 }
 
 .status.paid {
-  background: #d1f7d6;
+  background: #ddfce1;
   color: var(--CLR-success);
 }
 
 .status.failed {
-  background: #ffd6d6;
+  background: #ffdede;
   color: var(--CLR-failed);
 }
 

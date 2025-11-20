@@ -1,0 +1,127 @@
+.order-details-container {
+  padding-block: 20px;
+  background-color: var(--CLR-bg-fourth);
+  min-height: 100vh;
+}
+
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  outline: none;
+  padding: 5px 20px;
+  background-color: var(--CLR-item);
+  border-radius: 6px;
+  color: var(--CLR-bg-main);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--CLR-item-hover);
+}
+
+/* ================= GENERAL INFO ================ */
+.general-info {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.info-grid {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-item span {
+  color: #555;
+}
+
+.status-badge {
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.pending {
+  background: #ffe9b3;
+  color: #b37b00;
+}
+
+.status-badge.paid,
+.status-badge.success {
+  background: #d6f5d6;
+  color: #117a23;
+}
+
+.status-badge.failed {
+  background: #ffd6d6;
+  color: #b30000;
+}
+
+.status-badge.small {
+  font-size: 13px;
+  padding: 2px 8px;
+}
+
+/* ================= TABLE STYLE ================ */
+.details-section {
+  margin-bottom: 30px;
+}
+
+.details-table {
+  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--CLR-bg-main);
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 12px 15px;
+  align-items: center;
+  font-size: 15px;
+}
+
+.table-header {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.details-section:nth-of-type(2) .table-header,
+.details-section:nth-of-type(2) .table-row {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.table-row {
+  border-bottom: 1px solid #eee;
+}
+
+.table-row:hover {
+  background: #fafafa;
+}
