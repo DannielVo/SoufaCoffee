@@ -31,7 +31,7 @@
 }
 
 .order-grid.item:hover {
-  background: #fafafa;
+  background-color: var(--CLR-bg-fifth);
 }
 
 /* Status colors */

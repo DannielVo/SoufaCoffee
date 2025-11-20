@@ -123,5 +123,5 @@
 }
 
 .table-row:hover {
-  background: #fafafa;
+  background-color: var(--CLR-bg-fifth);
 }

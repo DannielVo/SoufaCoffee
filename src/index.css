@@ -12,10 +12,12 @@
   --CLR-bg-secondary: #e8e7e3;
   --CLR-bg-third: #f9fafb;
   --CLR-bg-fourth: #f3f4f6;
+  --CLR-bg-fifth: #fafafa;
   --CLR-text: #1a2428;
   --CLR-item: #ad8330;
   --CLR-item-hover: #977124;
   --CLR-success: #2b8a3e;
   --CLR-failed: #b82121;
   --CLR-pending: #b58b00;
+  --CLR-edit: #d97706;
 }

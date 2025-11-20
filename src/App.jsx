@@ -13,6 +13,7 @@ import ManagerLayout from "./layouts/ManagerLayout";
 import BaristaLayout from "./layouts/BaristaLayout";
 import PreparationList from "./pages/preparationList/PreparationList";
 import OrderList from "./pages/orderList/OrderList";
+import WareHouse from "./components/wareHouse/WareHouse";
 
 const App = () => {
   const plainPages = [
@@ -66,6 +67,10 @@ const App = () => {
           <Route path="/cashier/payment" element={<PaymentPg />} />
           <Route path="/cashier/orders" element={<OrderList />} />
           <Route path="/cashier/profile" element={<Profile />} />
+          <Route
+            path="/cashier/warehouse"
+            element={<WareHouse isManager={false} />}
+          />
         </Route>
 
         <Route element={<BaristaLayout />}>
@@ -75,6 +80,10 @@ const App = () => {
         <Route element={<ManagerLayout />}>
           <Route path="/manager/dashboard" element={<Dashboard />} />
           <Route path="/manager/profile" element={<Profile />} />
+          <Route
+            path="/manager/warehouse"
+            element={<WareHouse isManager={true} />}
+          />
         </Route>
 
         {plainPages.map((item, index) => (

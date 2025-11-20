@@ -198,3 +198,36 @@ export const TRANSACTIONS = [
     created_at: "2025-01-03 14:47",
   },
 ];
+
+export const WAREHOUSE_DATA = [
+  {
+    id: 1,
+    name: "Coffee powder",
+    stock_quantity: 5000,
+    price: "200000",
+    date_stock_in: "2025-01-20",
+    remaining: 2000,
+    staff_add: "Nguyen Van A",
+    last_edit: "Tran B",
+  },
+  {
+    id: 2,
+    name: "Whipping cream",
+    stock_quantity: 5000,
+    price: "200000",
+    date_stock_in: "2025-01-20",
+    remaining: 2000,
+    staff_add: "Nguyen Van A",
+    last_edit: "Tran B",
+  },
+  {
+    id: 3,
+    name: "Condensed milk",
+    stock_quantity: 5000,
+    price: "200000",
+    date_stock_in: "2025-01-20",
+    remaining: 2000,
+    staff_add: "Nguyen Van A",
+    last_edit: "Tran B",
+  },
+];

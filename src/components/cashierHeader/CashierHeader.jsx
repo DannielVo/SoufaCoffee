@@ -15,10 +15,10 @@ const CashierHeader = () => {
           </a>
         </div>
 
-        <div className="nav-center search-container">
+        {/* <div className="nav-center search-container">
           <i className="bxr  bx-search search-icon"></i>
           <input type="text" placeholder="Search..." className="search-input" />
-        </div>
+        </div> */}
 
         <div className="nav-right">
           <div className="nav-right-item">
@@ -27,6 +27,15 @@ const CashierHeader = () => {
               className="nav-right-title"
             >
               Order List
+            </a>
+          </div>
+
+          <div className="nav-right-item">
+            <a
+              onClick={() => navigate("/cashier/warehouse")}
+              className="nav-right-title"
+            >
+              Warehouse
             </a>
           </div>
 
