@@ -38,6 +38,7 @@ const WareHouse = ({ data = [], isManager = false }) => {
             <div>Price</div>
             <div>Date In</div>
             <div>Remaining</div>
+            <div>Unit</div>
             {isManager && <div>Staff Added</div>}
             {isManager && <div>Last Edited By</div>}
             <div>Actions</div>
@@ -56,6 +57,7 @@ const WareHouse = ({ data = [], isManager = false }) => {
               <div>{formatPrice(item.price)}</div>
               <div>{item.date_stock_in}</div>
               <div>{item.remaining}</div>
+              <div>{item.unit}</div>
 
               {isManager && <div>{item.staff_add}</div>}
               {isManager && <div>{item.last_edit}</div>}

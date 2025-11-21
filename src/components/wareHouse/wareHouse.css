@@ -69,24 +69,26 @@
 .grid-manager {
   grid-template-columns:
     70px
-    1.5fr
+    1fr
     1fr
     1fr
     1.2fr
     1fr
     1fr
     1fr
+    80px
     80px;
 }
 
 .grid-cashier {
   grid-template-columns:
     70px
-    1.5fr
+    1fr
     1fr
     1fr
     1.2fr
     1fr
+    80px
     80px;
 }
 
