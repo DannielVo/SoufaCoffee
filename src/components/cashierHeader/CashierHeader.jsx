@@ -23,6 +23,15 @@ const CashierHeader = () => {
         <div className="nav-right">
           <div className="nav-right-item">
             <a
+              onClick={() => navigate("/cashier/home")}
+              className="nav-right-title"
+            >
+              Menu
+            </a>
+          </div>
+
+          <div className="nav-right-item">
+            <a
               onClick={() => navigate("/cashier/orders")}
               className="nav-right-title"
             >

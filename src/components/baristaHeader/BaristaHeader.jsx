@@ -15,12 +15,16 @@ const BaristaHeader = () => {
           </a>
         </div>
 
-        {/* <div className="nav-center search-container">
-          <i className="bxr  bx-search search-icon"></i>
-          <input type="text" placeholder="Search..." className="search-input" />
-        </div> */}
-
         <div className="nav-right">
+          <div className="nav-right-item">
+            <a
+              onClick={() => navigate("/barista/preparation")}
+              className="nav-right-title"
+            >
+              Preparation List
+            </a>
+          </div>
+
           <div className="nav-right-item">
             <a
               onClick={() => navigate("/barista/ingrdients")}

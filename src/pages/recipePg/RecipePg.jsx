@@ -7,7 +7,7 @@ const RecipePg = ({ isManager = false }) => {
     <div className="recipe-list-wrapper left-right">
       <div className="recipe-list-header">
         <div className="recipe-left">
-          <h2 className="recipe-list-title">Ingredient List</h2>
+          <h2 className="recipe-list-title">Recipe List</h2>
         </div>
 
         <div className="recipe-right">
