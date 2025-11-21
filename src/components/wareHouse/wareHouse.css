@@ -45,7 +45,8 @@
 }
 
 .wh-add-btn:hover {
-  background-color: var(--CLR-item-hover);
+  outline: none;
+  border: 2px solid var(--CLR-item-hover);
 }
 
 /* ===== Table ===== */

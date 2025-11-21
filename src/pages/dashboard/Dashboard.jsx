@@ -3,9 +3,27 @@ import "./dashboard.css";
 import WareHouse from "../../components/wareHouse/WareHouse";
 import RecipePg from "../recipePg/RecipePg";
 import { DASHBOARD_SIDEBAR_KEY } from "../../assets/assets";
+import StaffPg from "../staffPg/StaffPg";
+import IngredientList from "../ingredientList/IngredientList";
+import OrderList from "../orderList/OrderList";
+import PreparationList from "../preparationList/PreparationList";
+import DashboardContent from "../../components/dashboardContent/DashboardContent";
+import StaffContent from "../../components/staffContent/StaffContent";
+import ProductContent from "../../components/productContent/ProductContent";
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState(DASHBOARD_SIDEBAR_KEY.dashboard);
+  const [activeTab, setActiveTab] = useState("Dashboard");
+
+  const TAB_COMPONENTS = {
+    Dashboard: <DashboardContent />,
+    Staff: <StaffContent />,
+    Product: <ProductContent />,
+    Ingredient: <IngredientList />,
+    Warehouse: <WareHouse isManager={true} />,
+    Recipe: <RecipePg isManager={true} />,
+    Order: <OrderList />,
+    Preparation: <PreparationList />,
+  };
 
   return (
     <div className="dashboard-container">
@@ -24,10 +42,7 @@ const Dashboard = () => {
         ))}
       </aside>
 
-      <main>
-        {/* <WareHouse isManager={true} /> */}
-        {/* <RecipePg isManager={true} /> */}
-      </main>
+      <main className="main-content">{TAB_COMPONENTS[activeTab]}</main>
     </div>
   );
 };
