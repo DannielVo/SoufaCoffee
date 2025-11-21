@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ORDER_LIST } from "../../assets/dummyDB";
 import OrderDetails from "../orderDetails/OrderDetails";
 
-const OrderList = () => {
+const OrderList = ({ isManager = false }) => {
   const [isOrderDetails, setIsOrderDetails] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
@@ -26,7 +26,11 @@ const OrderList = () => {
   return (
     <>
       {isOrderDetails === false ? (
-        <div className="order-list-wrapper left-right">
+        <div
+          className={`order-list-wrapper ${
+            isManager === false ? "left-right" : "manager-wrapper"
+          }`}
+        >
           <div className="order-list-header">
             <div className="order-header-left">
               <h2 className="order-list-title">Order List</h2>
@@ -84,6 +88,7 @@ const OrderList = () => {
         <OrderDetails
           order={selectedOrder}
           onBack={() => setIsOrderDetails(false)}
+          onManager={isManager}
         />
       )}
     </>

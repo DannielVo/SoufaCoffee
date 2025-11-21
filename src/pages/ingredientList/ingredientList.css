@@ -4,9 +4,48 @@
   min-height: 100vh;
 }
 
+.ingredient-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ingredient-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .ingredient-list-title {
   font-size: 25px;
-  margin-bottom: 20px;
+}
+
+.ingredient-add-btn {
+  background-color: var(--CLR-item);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.ingredient-add-btn:hover {
+  background-color: var(--CLR-item-hover);
+}
+
+.ingredient-search {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.ingredient-search:focus {
+  outline: none;
+  border: 2px solid var(--CLR-item);
 }
 
 .ingredient-list-container {
@@ -18,7 +57,8 @@
 /* GRID layout */
 .ingredient-grid {
   display: grid;
-  grid-template-columns: 150px 220px 260px 280px 260px 100px;
+  /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
+  grid-template-columns: repeat(6, 1fr);
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;

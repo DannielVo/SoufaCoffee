@@ -12,7 +12,11 @@ const WareHouse = ({ data = [], isManager = false }) => {
   };
 
   return (
-    <div className="warehouse-wrapper left-right">
+    <div
+      className={`warehouse-wrapper ${
+        isManager === false ? "left-right" : "manager-wrapper"
+      }`}
+    >
       <div className="warehouse-header">
         <div className="wh-left">
           <h2 className="wh-title">Warehouse</h2>

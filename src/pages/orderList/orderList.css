@@ -8,12 +8,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .order-list-title {
   font-size: 25px;
-  margin-bottom: 20px;
 }
 
 .order-search {
@@ -23,8 +22,9 @@
   font-size: 14px;
 }
 
-.order-search {
-  border-color: var(--CLR-item);
+.order-search:focus {
+  outline: none;
+  border: 2px solid var(--CLR-item);
 }
 
 .order-list-container {
@@ -36,7 +36,8 @@
 /* GRID layout */
 .order-grid {
   display: grid;
-  grid-template-columns: 150px 220px 260px 280px 260px 100px;
+  /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
+  grid-template-columns: repeat(6, 1fr);
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;

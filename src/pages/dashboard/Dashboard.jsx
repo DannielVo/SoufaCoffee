@@ -18,11 +18,11 @@ const Dashboard = () => {
     Dashboard: <DashboardContent />,
     Staff: <StaffContent />,
     Product: <ProductContent />,
-    Ingredient: <IngredientList />,
+    Ingredient: <IngredientList isManager={true} />,
     Warehouse: <WareHouse isManager={true} />,
     Recipe: <RecipePg isManager={true} />,
-    Order: <OrderList />,
-    Preparation: <PreparationList />,
+    Order: <OrderList isManager={true} />,
+    Preparation: <PreparationList isManager={true} />,
   };
 
   return (

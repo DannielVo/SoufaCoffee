@@ -4,7 +4,11 @@ import { RECIPE_LIST } from "../../assets/dummyDB";
 
 const RecipePg = ({ isManager = false }) => {
   return (
-    <div className="recipe-list-wrapper left-right">
+    <div
+      className={`recipe-list-wrapper ${
+        isManager === false ? "left-right" : "manager-wrapper"
+      }`}
+    >
       <div className="recipe-list-header">
         <div className="recipe-left">
           <h2 className="recipe-list-title">Recipe List</h2>

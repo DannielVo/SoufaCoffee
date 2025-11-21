@@ -5,7 +5,7 @@ import { PREP_LIST } from "../../assets/dummyDB";
 import PrepDetails from "../prepDetails/PrepDetails";
 import StatusDropdown from "../../components/statusDropdown/StatusDropdown";
 
-const PreparationList = () => {
+const PreparationList = ({ isManager = false }) => {
   const [isPrepDetails, setIsPrepDetails] = useState(false);
   const [selectedPrep, setSelectedPrep] = useState(null);
   const [prepList, setPrepList] = useState(PREP_LIST);
@@ -20,7 +20,11 @@ const PreparationList = () => {
   return (
     <>
       {isPrepDetails === false ? (
-        <div className="prep-list-wrapper left-right">
+        <div
+          className={`prep-list-wrapper ${
+            isManager === false ? "left-right" : "manager-wrapper"
+          }`}
+        >
           <h2 className="prep-list-title">Preparation List</h2>
 
           <div className="prep-list-container">

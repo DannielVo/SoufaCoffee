@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./orderDetails.css";
 import { ORDER_PAYMENT, TRANSACTIONS } from "../../assets/dummyDB";
 
-const OrderDetails = ({ order, onBack }) => {
+const OrderDetails = ({ order, onBack, onManager }) => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -12,7 +12,11 @@ const OrderDetails = ({ order, onBack }) => {
   };
 
   return (
-    <div className="order-details-container left-right">
+    <div
+      className={`order-details-container ${
+        onManager === false ? "left-right" : "manager-wrapper"
+      }`}
+    >
       {/* ===== GENERAL INFO ===== */}
       <div className="order-details-header">
         <h3 className="section-title">General Information</h3>

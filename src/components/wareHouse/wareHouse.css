@@ -4,6 +4,10 @@
   background-color: var(--CLR-bg-fourth);
 }
 
+.manager-wrapper {
+  padding-inline: 20px;
+}
+
 .warehouse-header {
   display: flex;
   justify-content: space-between;
@@ -30,7 +34,8 @@
 }
 
 .wh-search:focus {
-  border-color: var(--CLR-item);
+  outline: none;
+  border: 2px solid var(--CLR-item);
 }
 
 .wh-add-btn {
@@ -69,15 +74,17 @@
 .grid-manager {
   grid-template-columns:
     70px
+    1.5fr
     1fr
-    1fr
-    1fr
+    1.2fr
     1.2fr
     1fr
     1fr
     1fr
-    80px
-    80px;
+    1fr
+    50px;
+
+  /* grid-template-columns: repeat(10, 2fr); */
 }
 
 .grid-cashier {

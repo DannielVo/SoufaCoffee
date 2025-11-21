@@ -18,7 +18,8 @@
 /* GRID layout */
 .prep-grid {
   display: grid;
-  grid-template-columns: 150px 220px 260px 280px 260px 100px;
+  /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
+  grid-template-columns: repeat(6, 1fr);
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;

@@ -2,10 +2,27 @@ import React from "react";
 import "./ingredientList.css";
 import { INGREDIENT_LIST } from "../../assets/dummyDB";
 
-const IngredientList = () => {
+const IngredientList = ({ isManager = false }) => {
   return (
-    <div className="ingredient-list-wrapper left-right">
-      <h2 className="ingredient-list-title">Ingredient List</h2>
+    <div
+      className={`ingredient-list-wrapper left-right ${
+        isManager === false ? "left-right" : "manager-wrapper"
+      }`}
+    >
+      <div className="ingredient-list-header">
+        <div className="ingredient-left">
+          <h2 className="ingredient-list-title">Ingredient List</h2>
+        </div>
+
+        <div className="ingredient-right">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="ingredient-search"
+          />
+          {isManager && <button className="ingredient-add-btn">Add</button>}
+        </div>
+      </div>
 
       <div className="ingredient-list-container">
         <div className="ingredient-grid header">

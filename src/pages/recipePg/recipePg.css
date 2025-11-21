@@ -44,7 +44,8 @@
 }
 
 .recipe-search:focus {
-  border-color: var(--CLR-item);
+  outline: none;
+  border: 2px solid var(--CLR-item);
 }
 
 /* Table */
