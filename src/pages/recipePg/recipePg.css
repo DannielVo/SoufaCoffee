@@ -1,0 +1,95 @@
+.recipe-list-wrapper {
+  padding-block: 20px;
+  background-color: var(--CLR-bg-fourth);
+  min-height: 100vh;
+}
+
+.recipe-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recipe-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.recipe-list-title {
+  font-size: 25px;
+}
+
+.recipe-add-btn {
+  background-color: var(--CLR-item);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.recipe-add-btn:hover {
+  background-color: var(--CLR-item-hover);
+}
+
+.recipe-search {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.recipe-search:focus {
+  border-color: var(--CLR-item);
+}
+
+/* Table */
+.recipe-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipe-table-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.recipe-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.recipe-grid-header,
+.recipe-grid-item {
+  display: grid;
+  padding: 12px 15px;
+  align-items: center;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.recipe-manager {
+  grid-template-columns: 150px 1fr 1fr 1fr 1fr;
+}
+
+.recipe-barista {
+  grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+}
+
+.recipe-grid-header {
+  font-weight: 600;
+  color: var(--CLR-text);
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.recipe-grid-item:hover {
+  background-color: var(--CLR-bg-fifth);
+}

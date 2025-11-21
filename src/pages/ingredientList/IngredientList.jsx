@@ -11,9 +11,9 @@ const IngredientList = () => {
         <div className="ingredient-grid header">
           <div>No.</div>
           <div>Ingredient</div>
-          <div>Unit</div>
           <div>Status</div>
           <div>Remaining</div>
+          <div>Unit</div>
           <div className="actions-col">Actions</div>
         </div>
 
@@ -22,11 +22,11 @@ const IngredientList = () => {
           <div className="ingredient-grid item" key={`ingredient-${item.id}`}>
             <div>{index + 1}</div>
             <div>{item.name}</div>
-            <div>{item.unit}</div>
             <div className={`status ${item.status.toLowerCase()}`}>
               {item.status}
             </div>
             <div>{item.remaining}</div>
+            <div>{item.unit}</div>
 
             <div className="actions">
               <button className="btn-icon edit">

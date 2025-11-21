@@ -41,7 +41,7 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .wh-add-btn:hover {
@@ -64,11 +64,6 @@
   font-size: 15px;
   border-bottom: 1px solid #eee;
 }
-
-/* .warehouse-grid {
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 15px;
-} */
 
 .grid-manager {
   grid-template-columns:

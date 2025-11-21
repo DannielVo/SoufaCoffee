@@ -32,6 +32,15 @@ const BaristaHeader = () => {
 
           <div className="nav-right-item">
             <a
+              onClick={() => navigate("/barista/recipe")}
+              className="nav-right-title"
+            >
+              Recipe List
+            </a>
+          </div>
+
+          <div className="nav-right-item">
+            <a
               onClick={() => navigate("/barista/profile")}
               className="nav-right-title"
             >

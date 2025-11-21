@@ -363,3 +363,100 @@ export const INGREDIENT_LIST = [
     status: "Available",
   },
 ];
+
+export const RECIPE_LIST = [
+  {
+    id: 1,
+    name: "Black Coffee",
+    ingredients: [
+      { name: "Coffee powder", quantity: 20, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 2,
+    name: "Milk Coffee",
+    ingredients: [
+      { name: "Coffee powder", quantity: 20, unit: "g" },
+      { name: "Condensed milk", quantity: 30, unit: "ml" },
+      { name: "Fresh milk", quantity: 50, unit: "ml" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 3,
+    name: "White Coffee",
+    ingredients: [
+      { name: "Coffee powder", quantity: 20, unit: "g" },
+      { name: "Fresh milk", quantity: 80, unit: "ml" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 4,
+    name: "Salted Coffee",
+    ingredients: [
+      { name: "Coffee powder", quantity: 20, unit: "g" },
+      { name: "Condensed milk", quantity: 30, unit: "ml" },
+      { name: "Table salt", quantity: 1, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 5,
+    name: "Chocolate",
+    ingredients: [
+      { name: "Cocoa powder", quantity: 15, unit: "g" },
+      { name: "Fresh milk", quantity: 90, unit: "ml" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 6,
+    name: "Matcha Latte",
+    ingredients: [
+      { name: "Matcha powder", quantity: 9, unit: "g" },
+      { name: "Fresh milk", quantity: 150, unit: "ml" },
+      { name: "Sugar", quantity: 10, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 7,
+    name: "Peach Tea",
+    ingredients: [
+      { name: "Tea leaves", quantity: 2, unit: "g" },
+      { name: "Peach syrup", quantity: 20, unit: "ml" },
+      { name: "Sugar", quantity: 5, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 8,
+    name: "Lemon Tea",
+    ingredients: [
+      { name: "Tea leaves", quantity: 2, unit: "g" },
+      { name: "Lemon syrup", quantity: 20, unit: "ml" },
+      { name: "Sugar", quantity: 5, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 9,
+    name: "Orange Juice",
+    ingredients: [
+      { name: "Orange syrup", quantity: 40, unit: "ml" },
+      { name: "Sugar", quantity: 5, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+  {
+    id: 10,
+    name: "Pineapple Juice",
+    ingredients: [
+      { name: "Pineapple syrup", quantity: 40, unit: "ml" },
+      { name: "Sugar", quantity: 5, unit: "g" },
+      { name: "Ice", quantity: 50, unit: "g" },
+    ],
+  },
+];
