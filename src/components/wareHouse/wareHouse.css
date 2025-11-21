@@ -29,6 +29,10 @@
   font-size: 14px;
 }
 
+.wh-search:focus {
+  border-color: var(--CLR-item);
+}
+
 .wh-add-btn {
   background-color: var(--CLR-item);
   color: #fff;

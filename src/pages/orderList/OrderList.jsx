@@ -27,7 +27,18 @@ const OrderList = () => {
     <>
       {isOrderDetails === false ? (
         <div className="order-list-wrapper left-right">
-          <h2 className="order-list-title">Order List</h2>
+          <div className="order-list-header">
+            <div className="order-header-left">
+              <h2 className="order-list-title">Order List</h2>
+            </div>
+            <div className="order-header-right">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="order-search"
+              />
+            </div>
+          </div>
 
           <div className="order-list-container">
             <div className="order-grid header">
