@@ -3,10 +3,12 @@ import "./preparationList.css";
 import { useNavigate } from "react-router-dom";
 import { PREP_LIST } from "../../assets/dummyDB";
 import PrepDetails from "../prepDetails/PrepDetails";
+import StatusDropdown from "../../components/statusDropdown/StatusDropdown";
 
 const PreparationList = () => {
   const [isPrepDetails, setIsPrepDetails] = useState(false);
   const [selectedPrep, setSelectedPrep] = useState(null);
+  const [prepList, setPrepList] = useState(PREP_LIST);
 
   const handleSelectedPrep = (item) => {
     setSelectedPrep(item);
@@ -32,15 +34,26 @@ const PreparationList = () => {
             </div>
 
             {/* List items */}
-            {PREP_LIST.map((prep, index) => (
+            {prepList.map((prep, index) => (
               <div className="prep-grid item" key={`prep-${prep.id}`}>
                 <div>{index + 1}</div>
                 <div>#{prep.id}</div>
                 <div>{prep.created_at}</div>
                 <div>{prep.staff}</div>
-                <div className={`status ${prep.status.toLowerCase()}`}>
+                {/* <div className={`status ${prep.status.toLowerCase()}`}>
                   {prep.status}
-                </div>
+                </div> */}
+
+                <StatusDropdown
+                  value={prep.status}
+                  onChange={(newStatus) => {
+                    setPrepList((prev) =>
+                      prev.map((p) =>
+                        p.id === prep.id ? { ...p, status: newStatus } : p
+                      )
+                    );
+                  }}
+                />
 
                 <div className="actions">
                   <button
@@ -49,8 +62,8 @@ const PreparationList = () => {
                   >
                     <i className="bxr  bx-eye"></i>
                   </button>
-                  <button className="btn-icon edit">
-                    <i className="bx bx-edit"></i>
+                  <button className="btn-icon save">
+                    <i class="bxr  bx-save"></i>
                   </button>
                 </div>
               </div>

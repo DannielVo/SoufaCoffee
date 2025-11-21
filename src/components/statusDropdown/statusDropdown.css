@@ -1,0 +1,52 @@
+.prep-status-wrapper {
+  position: relative;
+  width: 120px;
+}
+
+/* Badge */
+.prep-status-display {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #d4d4d4;
+  text-align: center;
+}
+
+/* Colors */
+.prep-status-display.pending {
+  background: #fff3cd;
+  color: var(--CLR-pending);
+}
+
+.prep-status-display.in-progress {
+  background: #e7f1ff;
+  color: var(--CLR-doing);
+}
+
+.prep-status-display.done {
+  background: #ddfce1;
+  color: var(--CLR-success);
+}
+
+/* Menu */
+.prep-status-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.prep-status-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.prep-status-item:hover {
+  background: #f3f3f3;
+}

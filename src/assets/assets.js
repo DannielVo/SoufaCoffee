@@ -5,3 +5,5 @@ export const assets = {
   mainLogo_3,
   qr_code,
 };
+
+export const ORDER_STATUS = ["Pending", "In-progress", "Done"];
