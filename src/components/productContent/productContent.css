@@ -1,0 +1,137 @@
+.product-list-wrapper {
+  padding: 20px;
+  background-color: var(--CLR-bg-fourth);
+  min-height: 100vh;
+}
+
+.product-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-list-title {
+  font-size: 25px;
+}
+
+.product-add-btn {
+  background-color: var(--CLR-item);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.product-add-btn:hover {
+  background-color: var(--CLR-item-hover);
+}
+
+.product-search {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.product-search:focus {
+  outline: none;
+  border: 2px solid var(--CLR-item);
+}
+
+.product-summary {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--CLR-text);
+}
+
+.product-summary span {
+  color: var(--CLR-item);
+}
+
+/* GRID layout */
+.product-list-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.product-grid {
+  display: grid;
+  /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
+  grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1fr;
+  padding: 12px 0;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 15px;
+}
+
+.product-grid.header {
+  font-weight: 600;
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.product-grid.item:hover {
+  background-color: var(--CLR-bg-fifth);
+}
+
+/* Status colors */
+.status {
+  width: fit-content;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.status.active {
+  background: #ddfce1;
+  color: var(--CLR-success);
+}
+
+.status.inactive {
+  background: #ffdede;
+  color: var(--CLR-failed);
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon.detail {
+  background: #e7f1ff;
+  color: var(--CLR-doing);
+}
+
+.btn-icon.edit {
+  background: #fff3e6;
+  color: #d97706;
+}
+
+.btn-icon:hover {
+  opacity: 0.8;
+}
