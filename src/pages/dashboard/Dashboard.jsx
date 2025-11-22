@@ -3,7 +3,6 @@ import "./dashboard.css";
 import WareHouse from "../../components/wareHouse/WareHouse";
 import RecipePg from "../recipePg/RecipePg";
 import { DASHBOARD_SIDEBAR_KEY } from "../../assets/assets";
-import StaffPg from "../staffPg/StaffPg";
 import IngredientList from "../ingredientList/IngredientList";
 import OrderList from "../orderList/OrderList";
 import PreparationList from "../preparationList/PreparationList";
@@ -16,13 +15,13 @@ const Dashboard = () => {
 
   const TAB_COMPONENTS = {
     Dashboard: <DashboardContent />,
-    Staff: <StaffContent />,
-    Product: <ProductContent />,
-    Ingredient: <IngredientList isManager={true} />,
+    Staffs: <StaffContent />,
+    Products: <ProductContent />,
+    Ingredients: <IngredientList isManager={true} />,
     Warehouse: <WareHouse isManager={true} />,
-    Recipe: <RecipePg isManager={true} />,
-    Order: <OrderList isManager={true} />,
-    Preparation: <PreparationList isManager={true} />,
+    Recipes: <RecipePg isManager={true} />,
+    Orders: <OrderList isManager={true} />,
+    Preparations: <PreparationList isManager={true} />,
   };
 
   return (

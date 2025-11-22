@@ -16,17 +16,17 @@ export const DASHBOARD_SIDEBAR_KEY = [
   },
   {
     id: 2,
-    key: "Staff",
+    key: "Staffs",
     icon: "bxr  bx-user-circle",
   },
   {
     id: 3,
-    key: "Product",
+    key: "Products",
     icon: "bxr  bx-shopping-bag-alt",
   },
   {
     id: 4,
-    key: "Ingredient",
+    key: "Ingredients",
     icon: "bxr  bx-cookie",
   },
   {
@@ -36,17 +36,17 @@ export const DASHBOARD_SIDEBAR_KEY = [
   },
   {
     id: 6,
-    key: "Recipe",
+    key: "Recipes",
     icon: "bxr  bx-chef-hat",
   },
   {
     id: 7,
-    key: "Order",
+    key: "Orders",
     icon: "bxr  bx-list-ul-square",
   },
   {
     id: 8,
-    key: "Preparation",
+    key: "Preparations",
     icon: "bxr  bx-dropdown",
   },
 ];

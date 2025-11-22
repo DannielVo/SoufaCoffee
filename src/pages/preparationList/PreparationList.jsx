@@ -78,6 +78,7 @@ const PreparationList = ({ isManager = false }) => {
         <PrepDetails
           prep={selectedPrep}
           onBack={() => setIsPrepDetails(false)}
+          onManager={isManager}
         />
       )}
     </>

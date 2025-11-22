@@ -4,6 +4,7 @@
   background-color: var(--CLR-bg-fourth);
 }
 
+/* Wrapper for manager */
 .manager-wrapper {
   padding-inline: 20px;
 }

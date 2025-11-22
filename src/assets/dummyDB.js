@@ -460,3 +460,54 @@ export const RECIPE_LIST = [
     ],
   },
 ];
+
+export const STAFF_LIST = [
+  {
+    id: "S101",
+    email: "nguyenvana@citycoffee.com",
+    name: "Nguyễn Văn A",
+    phone: "0912345678",
+    role: "Cashier",
+    status: "Active",
+  },
+  {
+    id: "S102",
+    email: "tranthib@citycoffee.com",
+    name: "Trần Thị B",
+    phone: "0987654321",
+    role: "Barista",
+    status: "Active",
+  },
+  {
+    id: "S103",
+    email: "leminhc@citycoffee.com",
+    name: "Lê Minh C",
+    phone: "0932111222",
+    role: "Barista",
+    status: "Inactive",
+  },
+  {
+    id: "S104",
+    email: "phamquocd@citycoffee.com",
+    name: "Phạm Quốc D",
+    phone: "0905123123",
+    role: "Manager",
+    status: "Active",
+  },
+  {
+    id: "S105",
+    email: "hoangthie@citycoffee.com",
+    name: "Hoàng Thị E",
+    phone: "0977888999",
+    role: "Cashier",
+    status: "Inactive",
+  },
+  {
+    id: "S106",
+    email: "doanthif@citycoffee.com",
+    name: "Đoàn Thị F",
+    phone: "0918334455",
+    role: "Barista",
+    status: "Active",
+  },
+];

@@ -2,9 +2,13 @@ import React from "react";
 import "./prepDetails.css";
 import { ORDER_PAYMENT } from "../../assets/dummyDB";
 
-const PrepDetails = ({ prep, onBack }) => {
+const PrepDetails = ({ prep, onBack, onManager }) => {
   return (
-    <div className="prep-details-container left-right">
+    <div
+      className={`prep-details-container ${
+        onManager === false ? "left-right" : "manager-wrapper"
+      }`}
+    >
       {/* ===== GENERAL INFO ===== */}
       <div className="prep-details-header">
         <h3 className="section-title">General Information</h3>
