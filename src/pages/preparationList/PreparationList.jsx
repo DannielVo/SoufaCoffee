@@ -47,9 +47,6 @@ const PreparationList = ({ isManager = false }) => {
                 <div>#{prep.id}</div>
                 <div>{prep.created_at}</div>
                 <div>{prep.staff}</div>
-                {/* <div className={`status ${prep.status.toLowerCase()}`}>
-                  {prep.status}
-                </div> */}
 
                 <StatusDropdown
                   value={prep.status}
@@ -77,6 +74,23 @@ const PreparationList = ({ isManager = false }) => {
                 </div>
               </div>
             ))}
+
+            {/* List-footer */}
+            <div className="preparation-list-footer">
+              <div className="footer-left">
+                Total: {prepList.length} preparations
+              </div>
+
+              <div className="footer-right">
+                <button className="page-btn" disabled={true}>
+                  Previous
+                </button>
+                <button className="page-btn active">1</button>
+                <button className="page-btn" disabled={true}>
+                  Next
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       ) : (

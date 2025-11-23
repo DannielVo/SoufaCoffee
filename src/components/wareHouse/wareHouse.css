@@ -128,3 +128,37 @@
 .wh-edit-btn:hover {
   opacity: 0.7;
 }
+
+/* List-Footer */
+.warehouse-list-footer {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.footer-left {
+  font-weight: 600;
+  color: var(--CLR-text);
+}
+
+.footer-right {
+  display: flex;
+  gap: 6px;
+}
+
+.page-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: default;
+  font-weight: 600;
+}
+
+.page-btn.active {
+  background: var(--CLR-item);
+  color: #fff;
+  border-color: var(--CLR-item);
+}

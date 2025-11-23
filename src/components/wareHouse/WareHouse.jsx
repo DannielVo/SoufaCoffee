@@ -73,6 +73,23 @@ const WareHouse = ({ data = [], isManager = false }) => {
               </div>
             </div>
           ))}
+
+          {/* List-footer */}
+          <div className="warehouse-list-footer">
+            <div className="footer-left">
+              Total: {WAREHOUSE_DATA.length} records
+            </div>
+
+            <div className="footer-right">
+              <button className="page-btn" disabled={true}>
+                Previous
+              </button>
+              <button className="page-btn active">1</button>
+              <button className="page-btn" disabled={true}>
+                Next
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

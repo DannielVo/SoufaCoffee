@@ -73,6 +73,22 @@ const ProductContent = () => {
             </div>
           </div>
         ))}
+
+        <div className="product-list-footer">
+          {" "}
+          <div className="footer-left">
+            Total: {productList.length} products
+          </div>
+          <div className="footer-right">
+            <button className="page-btn" disabled={true}>
+              Previous
+            </button>
+            <button className="page-btn active">1</button>
+            <button className="page-btn" disabled={true}>
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
