@@ -46,6 +46,9 @@ const IngredientList = ({ isManager = false }) => {
             <div>{item.unit}</div>
 
             <div className="actions">
+              <div className="btn-icon detail">
+                <i class="bxr  bx-alert-circle"></i>
+              </div>
               <button className="btn-icon edit">
                 <i className="bx bx-edit"></i>
               </button>

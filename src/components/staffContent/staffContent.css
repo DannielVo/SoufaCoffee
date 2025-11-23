@@ -11,6 +11,12 @@
   margin-bottom: 20px;
 }
 
+.status-col {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .staff-right {
   display: flex;
   gap: 10px;
@@ -69,7 +75,7 @@
 .staff-grid {
   display: grid;
   /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
-  grid-template-columns: 1fr 1.5fr 3fr 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 2.5fr 1.5fr 1fr 1.5fr 1fr;
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;

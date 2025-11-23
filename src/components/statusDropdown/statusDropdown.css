@@ -24,9 +24,15 @@
   color: var(--CLR-doing);
 }
 
-.prep-status-display.done {
+.prep-status-display.done,
+.prep-status-display.active {
   background: #ddfce1;
   color: var(--CLR-success);
+}
+
+.prep-status-display.inactive {
+  background: #ffdede;
+  color: var(--CLR-failed);
 }
 
 /* Menu */

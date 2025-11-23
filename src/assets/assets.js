@@ -6,8 +6,6 @@ export const assets = {
   qr_code,
 };
 
-export const ORDER_STATUS = ["Pending", "In-progress", "Done"];
-
 export const DASHBOARD_SIDEBAR_KEY = [
   {
     id: 1,
@@ -50,3 +48,34 @@ export const DASHBOARD_SIDEBAR_KEY = [
     icon: "bxr  bx-dropdown",
   },
 ];
+
+export const ORDER_STATUS = ["Pending", "In-progress", "Done"];
+
+export const STAFF_STATUS = ["Active", "Inactive"];
+
+export const STAFF_COLOR = {
+  Active: "active",
+  Inactive: "inactive",
+};
+
+export const PRODUCT_STATUS = ["Active", "Inactive"];
+
+export const PRODUCT_COLOR = {
+  Active: "active",
+  Inactive: "inactive",
+};
+
+export const INGREDIENT_STATUS = ["Available", "Out_of_stock"];
+
+export const INGREDIENT_COLOR = {
+  Available: "available",
+  Out_of_stock: "out-of-stock",
+};
+
+export const PREP_STATUS = ["Pending", "In-progress", "Done"];
+
+export const PREP_COLOR = {
+  Pending: "pending",
+  "In-progress": "in-progress",
+  Done: "done",
+};

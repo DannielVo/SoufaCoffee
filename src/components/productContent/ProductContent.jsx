@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./productContent.css";
 import { PRODUCTS } from "../../assets/dummyDB";
+import StatusDropdown from "../statusDropdown/StatusDropdown";
+import { PRODUCT_COLOR, PRODUCT_STATUS } from "../../assets/assets";
 
 const ProductContent = () => {
+  const [productList, setProductList] = useState(PRODUCTS);
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -34,19 +38,37 @@ const ProductContent = () => {
           <div>Product</div>
           <div>Price</div>
           <div>Reamaining</div>
+          <div className="status-col">
+            Status<i class="bx bxs-hand-up"></i>{" "}
+          </div>
           <div className="actions-col">Actions</div>
         </div>
 
         {/* List items */}
-        {PRODUCTS.map((product, index) => (
+        {productList.map((product, index) => (
           <div className="product-grid item" key={`product-${product.id}`}>
             <div>{product.id}</div>
             <div>{product.name}</div>
             <div>{formatPrice(product.price)}</div>
             <div>{product.remaining}</div>
+            <StatusDropdown
+              value={product.status}
+              options={PRODUCT_STATUS}
+              colorMap={PRODUCT_COLOR}
+              onChange={(newStatus) => {
+                setProductList((prev) =>
+                  prev.map((p) =>
+                    p.id === product.id ? { ...p, status: newStatus } : p
+                  )
+                );
+              }}
+            />
             <div className="actions">
               <button className="btn-icon edit">
                 <i className="bx bx-edit"></i>
+              </button>
+              <button className="btn-icon save">
+                <i class="bxr  bx-save"></i>
               </button>
             </div>
           </div>

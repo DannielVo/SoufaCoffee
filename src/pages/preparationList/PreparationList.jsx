@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PREP_LIST } from "../../assets/dummyDB";
 import PrepDetails from "../prepDetails/PrepDetails";
 import StatusDropdown from "../../components/statusDropdown/StatusDropdown";
+import { PREP_COLOR, PREP_STATUS } from "../../assets/assets";
 
 const PreparationList = ({ isManager = false }) => {
   const [isPrepDetails, setIsPrepDetails] = useState(false);
@@ -33,7 +34,9 @@ const PreparationList = ({ isManager = false }) => {
               <div>Preparation ID</div>
               <div>Date</div>
               <div>Last Edited By</div>
-              <div>Status</div>
+              <div className="status-col">
+                Status<i class="bx bxs-hand-up"></i>{" "}
+              </div>
               <div className="actions-col">Actions</div>
             </div>
 
@@ -50,6 +53,8 @@ const PreparationList = ({ isManager = false }) => {
 
                 <StatusDropdown
                   value={prep.status}
+                  options={PREP_STATUS}
+                  colorMap={PREP_COLOR}
                   onChange={(newStatus) => {
                     setPrepList((prev) =>
                       prev.map((p) =>

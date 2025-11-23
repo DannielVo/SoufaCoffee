@@ -28,6 +28,7 @@ export const PRODUCTS = [
     name: "Black Coffee",
     price: 30000,
     remaining: 12,
+    status: "Active",
     img: black_coffee,
   },
   {
@@ -35,6 +36,7 @@ export const PRODUCTS = [
     name: "Milk Coffee",
     price: 35000,
     remaining: 7,
+    status: "Active",
     img: milk_coffee,
   },
   {
@@ -42,6 +44,7 @@ export const PRODUCTS = [
     name: "White Coffee",
     price: 45000,
     remaining: 3,
+    status: "Active",
     img: white_coffee,
   },
   {
@@ -49,6 +52,7 @@ export const PRODUCTS = [
     name: "Salted Coffee",
     price: 45000,
     remaining: 3,
+    status: "Active",
     img: salted_coffee,
   },
   {
@@ -56,6 +60,7 @@ export const PRODUCTS = [
     name: "Matcha Latte",
     price: 49000,
     remaining: 10,
+    status: "Inactive",
     img: matcha_latte,
   },
   {
@@ -63,6 +68,7 @@ export const PRODUCTS = [
     name: "Chocolate",
     price: 42000,
     remaining: 6,
+    status: "Active",
     img: chocolate,
   },
   {
@@ -70,6 +76,7 @@ export const PRODUCTS = [
     name: "Peach Tea",
     price: 38000,
     remaining: 14,
+    status: "Inactive",
     img: peach_tea,
   },
   {
@@ -77,6 +84,7 @@ export const PRODUCTS = [
     name: "Lemon Tea",
     price: 35000,
     remaining: 2,
+    status: "Active",
     img: lemon_tea,
   },
   {
@@ -84,6 +92,7 @@ export const PRODUCTS = [
     name: "Orange Juice",
     price: 40000,
     remaining: 0,
+    status: "Active",
     img: orange_juice,
   },
   {
@@ -91,6 +100,7 @@ export const PRODUCTS = [
     name: "Pineapple Juice",
     price: 42000,
     remaining: 9,
+    status: "Active",
     img: pineapple_juice,
   },
 ];

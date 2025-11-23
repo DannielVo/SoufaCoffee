@@ -69,7 +69,7 @@
 .product-grid {
   display: grid;
   /* grid-template-columns: 150px 220px 260px 280px 260px 100px; */
-  grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1.5fr 1fr 1.2fr 1fr;
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;
