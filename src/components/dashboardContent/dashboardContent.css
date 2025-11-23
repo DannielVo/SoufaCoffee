@@ -1,0 +1,99 @@
+.dashboard-content {
+  padding: 20px 30px;
+  min-height: 100vh;
+  background-color: var(--CLR-bg-fourth);
+}
+
+/* ===== SECTION 1 ===== */
+.db-cards-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.db-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.db-card:hover {
+  transform: scale(0.98);
+}
+
+/* Header */
+.db-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.db-card-header i {
+  font-size: 20px;
+}
+
+.db-card-header span {
+  font-size: 16px;
+}
+
+/* Content */
+.db-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.db-card-value {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* Percent change */
+.db-card-percent {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.db-card-percent i {
+  font-size: 16px;
+}
+
+.db-card-percent.positive {
+  color: #2ecc71;
+}
+
+.db-card-percent.negative {
+  color: #e74c3c;
+}
+
+/* ===== SECTION 2 ===== */
+.dashboard-section-two {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.chart-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 350px;
+}

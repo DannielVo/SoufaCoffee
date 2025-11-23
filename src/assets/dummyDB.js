@@ -511,3 +511,37 @@ export const STAFF_LIST = [
     status: "Active",
   },
 ];
+
+export const DASHBOARD_STATS = [
+  {
+    id: 1,
+    type: "Revenue",
+    icon: "bx bx-dollar-circle",
+    title: "Total revenue",
+    value: "5000000",
+    percentChange: 0.5,
+  },
+  {
+    id: 2,
+    type: "Order",
+    icon: "bx bx-cart",
+    title: "Total orders",
+    value: "200",
+    percentChange: -0.2,
+  },
+];
+
+export const MONTHLY_REVENUE_DATA = [
+  { month: "Jan", revenue: 32000000 },
+  { month: "Feb", revenue: 45000000 },
+  { month: "Mar", revenue: 38000000 },
+  { month: "Apr", revenue: 50000000 },
+  { month: "May", revenue: 62000000 },
+  { month: "Jun", revenue: 58000000 },
+  { month: "Jul", revenue: 69000000 },
+  { month: "Aug", revenue: 72000000 },
+  { month: "Sep", revenue: 64000000 },
+  { month: "Oct", revenue: 68000000 },
+  { month: "Nov", revenue: 75000000 },
+  { month: "Dec", revenue: 79000000 },
+];
