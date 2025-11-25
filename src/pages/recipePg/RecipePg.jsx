@@ -46,7 +46,7 @@ const RecipePg = ({ isManager = false }) => {
         <div className="recipe-list-container">
           {RECIPE_LIST.map((recipe) => (
             <div className="recipe-table-wrapper" key={`recipe-${recipe.id}`}>
-              <h3 className="recipe-title">{recipe.name}</h3>
+              <h3 className="recipe-title">{recipe.product}</h3>
 
               <div
                 className={`recipe-grid-header ${
@@ -76,7 +76,10 @@ const RecipePg = ({ isManager = false }) => {
                       <button
                         className="wh-edit-btn"
                         onClick={() => {
-                          setEditData(item);
+                          setEditData({
+                            product: recipe.product,
+                            ...item, // name, quantity, unit
+                          });
                           setOpenModal(true);
                         }}
                       >

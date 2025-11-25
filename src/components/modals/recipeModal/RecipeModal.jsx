@@ -25,8 +25,8 @@ const RecipeModal = ({
     if (isEdit && initialData) {
       setFormData({
         product: initialData.product || "",
-        ingredient: initialData.ingredient || "",
-        quantityRequired: initialData.quantityRequired || "",
+        ingredient: initialData.name || "",
+        quantityRequired: initialData.quantity || "",
         unit: initialData.unit || "",
       });
     }
@@ -50,17 +50,25 @@ const RecipeModal = ({
         {/* Product */}
         <div className="form-group">
           <label>Product</label>
-          <select
-            value={formData.product}
-            onChange={(e) => handleChange("product", e.target.value)}
-          >
-            <option value="">Select product</option>
-            {productOptions.map((product) => (
-              <option key={product.id} value={product.name}>
-                {product.name}
-              </option>
-            ))}
-          </select>
+          {isEdit ? (
+            <input
+              type="text"
+              value={formData.product}
+              onChange={(e) => handleChange("product", e.target.value)}
+            />
+          ) : (
+            <select
+              value={formData.product}
+              onChange={(e) => handleChange("product", e.target.value)}
+            >
+              <option value="">Select product</option>
+              {productOptions.map((product) => (
+                <option key={product.id} value={product.name}>
+                  {product.name}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
 
         {/* Ingredient */}

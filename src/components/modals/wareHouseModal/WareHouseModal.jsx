@@ -25,10 +25,10 @@ const WareHouseModal = ({
   useEffect(() => {
     if (isEdit && initialData) {
       setFormData({
-        ingredient: initialData.ingredient || "",
-        stockQuantity: initialData.stockQuantity || "",
+        ingredient: initialData.name || "",
+        stockQuantity: initialData.stock_quantity || "",
         price: initialData.price || "",
-        dateIn: initialData.dateIn || "",
+        dateIn: initialData.date_stock_in || "",
         remaining: initialData.remaining || "",
         unit: initialData.unit || "",
       });
@@ -63,17 +63,25 @@ const WareHouseModal = ({
         {/* Ingredient */}
         <div className="form-group">
           <label>Ingredient</label>
-          <select
-            value={formData.ingredient}
-            onChange={(e) => handleChange("ingredient", e.target.value)}
-          >
-            <option value="">Select ingredient</option>
-            {ingredientOptions.map((ing) => (
-              <option key={ing.id} value={ing.name}>
-                {ing.name}
-              </option>
-            ))}
-          </select>
+          {isEdit ? (
+            <input
+              type="text"
+              value={formData.ingredient}
+              onChange={(e) => handleChange("ingredient", e.target.value)}
+            />
+          ) : (
+            <select
+              value={formData.ingredient}
+              onChange={(e) => handleChange("ingredient", e.target.value)}
+            >
+              <option value="">Select ingredient</option>
+              {ingredientOptions.map((ing) => (
+                <option key={ing.id} value={ing.name}>
+                  {ing.name}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
 
         {/* Stock Quantity */}

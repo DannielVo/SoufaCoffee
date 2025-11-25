@@ -377,7 +377,7 @@ export const INGREDIENT_LIST = [
 export const RECIPE_LIST = [
   {
     id: 1,
-    name: "Black Coffee",
+    product: "Black Coffee",
     ingredients: [
       { name: "Coffee powder", quantity: 20, unit: "g" },
       { name: "Ice", quantity: 50, unit: "g" },
@@ -385,7 +385,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 2,
-    name: "Milk Coffee",
+    product: "Milk Coffee",
     ingredients: [
       { name: "Coffee powder", quantity: 20, unit: "g" },
       { name: "Condensed milk", quantity: 30, unit: "ml" },
@@ -395,7 +395,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 3,
-    name: "White Coffee",
+    product: "White Coffee",
     ingredients: [
       { name: "Coffee powder", quantity: 20, unit: "g" },
       { name: "Fresh milk", quantity: 80, unit: "ml" },
@@ -404,7 +404,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 4,
-    name: "Salted Coffee",
+    product: "Salted Coffee",
     ingredients: [
       { name: "Coffee powder", quantity: 20, unit: "g" },
       { name: "Condensed milk", quantity: 30, unit: "ml" },
@@ -414,7 +414,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 5,
-    name: "Chocolate",
+    product: "Chocolate",
     ingredients: [
       { name: "Cocoa powder", quantity: 15, unit: "g" },
       { name: "Fresh milk", quantity: 90, unit: "ml" },
@@ -423,7 +423,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 6,
-    name: "Matcha Latte",
+    product: "Matcha Latte",
     ingredients: [
       { name: "Matcha powder", quantity: 9, unit: "g" },
       { name: "Fresh milk", quantity: 150, unit: "ml" },
@@ -433,7 +433,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 7,
-    name: "Peach Tea",
+    product: "Peach Tea",
     ingredients: [
       { name: "Tea leaves", quantity: 2, unit: "g" },
       { name: "Peach syrup", quantity: 20, unit: "ml" },
@@ -443,7 +443,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 8,
-    name: "Lemon Tea",
+    product: "Lemon Tea",
     ingredients: [
       { name: "Tea leaves", quantity: 2, unit: "g" },
       { name: "Lemon syrup", quantity: 20, unit: "ml" },
@@ -453,7 +453,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 9,
-    name: "Orange Juice",
+    product: "Orange Juice",
     ingredients: [
       { name: "Orange syrup", quantity: 40, unit: "ml" },
       { name: "Sugar", quantity: 5, unit: "g" },
@@ -462,7 +462,7 @@ export const RECIPE_LIST = [
   },
   {
     id: 10,
-    name: "Pineapple Juice",
+    product: "Pineapple Juice",
     ingredients: [
       { name: "Pineapple syrup", quantity: 40, unit: "ml" },
       { name: "Sugar", quantity: 5, unit: "g" },
