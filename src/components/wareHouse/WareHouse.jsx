@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./wareHouse.css";
-import { WAREHOUSE_DATA } from "../../assets/dummyDB";
+import { INGREDIENT_LIST, WAREHOUSE_DATA } from "../../assets/dummyDB";
+import WareHouseModal from "../modals/wareHouseModal/WareHouseModal";
 
 const WareHouse = ({ data = [], isManager = false }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const [editData, setEditData] = useState(null);
+
+  const handleSubmit = () => {
+    setOpenModal(false);
+  };
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -12,87 +20,111 @@ const WareHouse = ({ data = [], isManager = false }) => {
   };
 
   return (
-    <div
-      className={`warehouse-wrapper ${
-        isManager === false ? "left-right" : "manager-wrapper"
-      }`}
-    >
-      <div className="warehouse-header">
-        <div className="wh-left">
-          <h2 className="wh-title">Warehouse</h2>
-        </div>
-
-        <div className="wh-right">
-          <input type="text" placeholder="Search..." className="wh-search" />
-          <button className="wh-add-btn">Add</button>
-        </div>
-      </div>
-
-      {/* ===== Content Table ===== */}
-      <section className="wh-details-section">
-        <div className="wh-details-table">
-          <div
-            className={`wh-table-header ${
-              isManager ? "grid-manager" : "grid-cashier"
-            }`}
-          >
-            <div>No.</div>
-            <div>Ingredient</div>
-            <div>Stock Qty</div>
-            <div>Price</div>
-            <div>Date In</div>
-            <div>Remaining</div>
-            <div>Unit</div>
-            {isManager && <div>Staff Added</div>}
-            {isManager && <div>Last Edited By</div>}
-            <div>Actions</div>
+    <>
+      <div
+        className={`warehouse-wrapper ${
+          isManager === false ? "left-right" : "manager-wrapper"
+        }`}
+      >
+        <div className="warehouse-header">
+          <div className="wh-left">
+            <h2 className="wh-title">Warehouse</h2>
           </div>
 
-          {WAREHOUSE_DATA.map((item, index) => (
+          <div className="wh-right">
+            <input type="text" placeholder="Search..." className="wh-search" />
+            <button
+              className="wh-add-btn"
+              onClick={() => {
+                setEditData(null); // reset form về chế độ Add
+                setOpenModal(true);
+              }}
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        {/* ===== Content Table ===== */}
+        <section className="wh-details-section">
+          <div className="wh-details-table">
             <div
-              className={`wh-table-row ${
+              className={`wh-table-header ${
                 isManager ? "grid-manager" : "grid-cashier"
               }`}
-              key={`wh-${item.id}`}
             >
-              <div>{index + 1}</div>
-              <div>{item.name}</div>
-              <div>{item.stock_quantity}</div>
-              <div>{formatPrice(item.price)}</div>
-              <div>{item.date_stock_in}</div>
-              <div>{item.remaining}</div>
-              <div>{item.unit}</div>
+              <div>No.</div>
+              <div>Ingredient</div>
+              <div>Stock Qty</div>
+              <div>Price</div>
+              <div>Date In</div>
+              <div>Remaining</div>
+              <div>Unit</div>
+              {isManager && <div>Staff Added</div>}
+              {isManager && <div>Last Edited By</div>}
+              <div>Actions</div>
+            </div>
 
-              {isManager && <div>{item.staff_add}</div>}
-              {isManager && <div>{item.last_edit}</div>}
+            {WAREHOUSE_DATA.map((item, index) => (
+              <div
+                className={`wh-table-row ${
+                  isManager ? "grid-manager" : "grid-cashier"
+                }`}
+                key={`wh-${item.id}`}
+              >
+                <div>{index + 1}</div>
+                <div>{item.name}</div>
+                <div>{item.stock_quantity}</div>
+                <div>{formatPrice(item.price)}</div>
+                <div>{item.date_stock_in}</div>
+                <div>{item.remaining}</div>
+                <div>{item.unit}</div>
 
-              <div>
-                <button className="wh-edit-btn">
-                  <i className="bx bx-edit"></i>
+                {isManager && <div>{item.staff_add}</div>}
+                {isManager && <div>{item.last_edit}</div>}
+
+                <div>
+                  <button
+                    className="wh-edit-btn"
+                    onClick={() => {
+                      setEditData(item);
+                      setOpenModal(true);
+                    }}
+                  >
+                    <i className="bx bx-edit"></i>
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            {/* List-footer */}
+            <div className="warehouse-list-footer">
+              <div className="footer-left">
+                Total: {WAREHOUSE_DATA.length} records
+              </div>
+
+              <div className="footer-right">
+                <button className="page-btn" disabled={true}>
+                  Previous
+                </button>
+                <button className="page-btn active">1</button>
+                <button className="page-btn" disabled={true}>
+                  Next
                 </button>
               </div>
             </div>
-          ))}
-
-          {/* List-footer */}
-          <div className="warehouse-list-footer">
-            <div className="footer-left">
-              Total: {WAREHOUSE_DATA.length} records
-            </div>
-
-            <div className="footer-right">
-              <button className="page-btn" disabled={true}>
-                Previous
-              </button>
-              <button className="page-btn active">1</button>
-              <button className="page-btn" disabled={true}>
-                Next
-              </button>
-            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+      <WareHouseModal
+        isOpen={openModal}
+        mode={editData ? "edit" : "add"}
+        initialData={editData}
+        ingredientOptions={INGREDIENT_LIST}
+        onClose={() => setOpenModal(false)}
+        onSubmit={(data) => handleSubmit()}
+      />
+    </>
   );
 };
 
