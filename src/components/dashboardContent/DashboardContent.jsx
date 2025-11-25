@@ -1,6 +1,10 @@
 import React from "react";
 import "./dashboardContent.css";
-import { DASHBOARD_STATS, MONTHLY_REVENUE_DATA } from "../../assets/dummyDB";
+import {
+  DAILY_REVENUE_NOVEMBER,
+  DASHBOARD_STATS,
+  MONTHLY_REVENUE_DATA,
+} from "../../assets/dummyDB";
 import {
   BarChart,
   Bar,
@@ -59,7 +63,28 @@ const DashboardContent = () => {
         })}
       </div>
 
-      {/* SECTION 2: BAR CHART */}
+      {/* SECTION 2: DAILY REVENUE BAR CHART */}
+      <div className="dashboard-section-two">
+        <h2 className="chart-title">Total revenue (November - Daily)</h2>
+
+        <div className="chart-wrapper">
+          <ResponsiveContainer width="100%" height={350}>
+            <BarChart data={DAILY_REVENUE_NOVEMBER} barSize={22}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis
+                dataKey="day"
+                height={45}
+                label={{ value: "Day", position: "insideBottom", dy: 5 }}
+              />
+              <YAxis tickFormatter={(value) => `${value / 1_000_000} M`} />
+              <Tooltip formatter={(value) => `${formatPrice(value)}`} />
+              <Bar dataKey="revenue" fill="#34C759" radius={[6, 6, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* SECTION 3: BAR CHART */}
       <div className="dashboard-section-two">
         <h2 className="chart-title">Total revenue (Monthly)</h2>
 
