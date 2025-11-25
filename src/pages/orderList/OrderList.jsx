@@ -41,6 +41,7 @@ const OrderList = ({ isManager = false }) => {
                 placeholder="Search..."
                 className="order-search"
               />
+              {isManager && <button className="order-list-add-btn">Add</button>}
             </div>
           </div>
 
