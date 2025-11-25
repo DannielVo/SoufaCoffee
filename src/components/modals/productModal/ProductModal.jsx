@@ -104,7 +104,7 @@ const ProductModal = ({
 
         {/* Submit */}
         <button className="submit-btn" onClick={handleSubmit}>
-          {isEdit ? "Confirm" : "Create"}
+          {isEdit ? "Confirm" : "Add"}
         </button>
       </div>
     </BaseModal>
