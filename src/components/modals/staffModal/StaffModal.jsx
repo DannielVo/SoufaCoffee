@@ -71,7 +71,7 @@ const StaffModal = ({
           />
         </div>
 
-        {/* Password → Chỉ có ở Add */}
+        {/* Password => Chỉ có ở Add */}
         {!isEdit && (
           <div className="form-group">
             <label>Password</label>
@@ -84,7 +84,7 @@ const StaffModal = ({
           </div>
         )}
 
-        {/* Phone → Chỉ có ở Edit */}
+        {/* Phone => Chỉ có ở Edit */}
         {isEdit && (
           <div className="form-group">
             <label>Phone</label>

@@ -12,21 +12,21 @@ const StaffContent = () => {
   const [editData, setEditData] = useState(null);
 
   const handleSubmit = () => {
-    if (editData) {
-      setStaffList((prev) =>
-        prev.map((s) => (s.id === editData.id ? { ...s, ...data } : s))
-      );
-    } else {
-      const newStaff = {
-        id: staffList.length + 1,
-        name: data.fullName,
-        email: data.email,
-        phone: data.phone || "",
-        role: data.role,
-        status: data.status,
-      };
-      setStaffList((prev) => [...prev, newStaff]);
-    }
+    // if (editData) {
+    //   setStaffList((prev) =>
+    //     prev.map((s) => (s.id === editData.id ? { ...s, ...data } : s))
+    //   );
+    // } else {
+    //   const newStaff = {
+    //     id: staffList.length + 1,
+    //     name: data.name,
+    //     email: data.email,
+    //     phone: data.phone || "",
+    //     role: data.role,
+    //     status: data.status,
+    //   };
+    //   setStaffList((prev) => [...prev, newStaff]);
+    // }
 
     setOpenModal(false);
   };

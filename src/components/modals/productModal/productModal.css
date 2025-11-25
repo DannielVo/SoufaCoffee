@@ -1,4 +1,4 @@
-.staff-modal-title {
+.product-modal-title {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -31,8 +31,19 @@
   font-size: 14px;
 }
 
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #d4d4d4;
+  font-size: 14px;
+  min-height: 80px;
+  resize: vertical;
+}
+
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: var(--CLR-item-hover);
   outline: none;
 }
