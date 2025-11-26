@@ -4,7 +4,7 @@ import PaymentPg from "./pages/paymentPg/PaymentPg";
 import Dashboard from "./pages/dashboard/Dashboard";
 import NotFoundPg from "./pages/notFoundPg/NotFoundPg";
 import Login from "./pages/login/Login";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import HomePg from "./pages/homePg/HomePg";
 import SettingPage from "./pages/SettingPage";
 import PlainPage from "./pages/PlainPage";
@@ -16,6 +16,7 @@ import OrderList from "./pages/orderList/OrderList";
 import WareHouse from "./components/wareHouse/WareHouse";
 import IngredientList from "./pages/ingredientList/IngredientList";
 import RecipePg from "./pages/recipePg/RecipePg";
+import PrivateRoute from "./pages/PrivateRoute";
 
 const App = () => {
   const plainPages = [
@@ -47,51 +48,40 @@ const App = () => {
   return (
     <>
       <Routes>
-        {/* <Route
-          path="/"
-          element={
-            <SettingPage>
-              <HomePg />
-            </SettingPage>
-          }
-        ></Route>
+        {/* default route / và /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
 
-        {pages.map((item, index) => (
-          <Route
-            key={item.path}
-            path={item.path}
-            element={<SettingPage>{item.component}</SettingPage>}
-          ></Route>
-        ))} */}
-
-        <Route element={<CashierLayout />}>
-          <Route path="/cashier/home" element={<HomePg />} />
-          <Route path="/cashier/payment" element={<PaymentPg />} />
-          <Route path="/cashier/orders" element={<OrderList />} />
-          <Route path="/cashier/profile" element={<Profile />} />
-          <Route
-            path="/cashier/warehouse"
-            element={<WareHouse isManager={false} />}
-          />
+        <Route element={<PrivateRoute allowedRoles={["cashier"]} />}>
+          <Route element={<CashierLayout />}>
+            <Route path="/cashier/home" element={<HomePg />} />
+            <Route path="/cashier/payment" element={<PaymentPg />} />
+            <Route path="/cashier/orders" element={<OrderList />} />
+            <Route path="/cashier/profile" element={<Profile />} />
+            <Route
+              path="/cashier/warehouse"
+              element={<WareHouse isManager={false} />}
+            />
+          </Route>
         </Route>
 
-        <Route element={<BaristaLayout />}>
-          <Route path="/barista/preparation" element={<PreparationList />} />
-          <Route path="/barista/profile" element={<Profile />} />
-          <Route path="/barista/ingrdients" element={<IngredientList />} />
-          <Route
-            path="/barista/recipe"
-            element={<RecipePg isManager={false} />}
-          />
+        <Route element={<PrivateRoute allowedRoles={["barista"]} />}>
+          <Route element={<BaristaLayout />}>
+            <Route path="/barista/preparation" element={<PreparationList />} />
+            <Route path="/barista/profile" element={<Profile />} />
+            <Route path="/barista/ingrdients" element={<IngredientList />} />
+            <Route
+              path="/barista/recipe"
+              element={<RecipePg isManager={false} />}
+            />
+          </Route>
         </Route>
 
-        <Route element={<ManagerLayout />}>
-          <Route path="/manager/dashboard" element={<Dashboard />} />
-          <Route path="/manager/profile" element={<Profile />} />
-          {/* <Route
-            path="/manager/warehouse"
-            element={<WareHouse isManager={true} />}
-          /> */}
+        <Route element={<PrivateRoute allowedRoles={["manager"]} />}>
+          <Route element={<ManagerLayout />}>
+            <Route path="/manager/dashboard" element={<Dashboard />} />
+            <Route path="/manager/profile" element={<Profile />} />
+          </Route>
         </Route>
 
         {plainPages.map((item, index) => (
