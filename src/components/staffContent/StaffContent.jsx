@@ -30,8 +30,17 @@ const StaffContent = () => {
     }
   };
 
-  const handleSubmit = (data) => {
-    handleUpdateStaff(data);
+  const handleSubmit = async (data) => {
+    if (editData) {
+      handleUpdateStaff(data);
+    } else {
+      try {
+        await createUser(data);
+        alert("Create status successfully!");
+      } catch (error) {
+        alert(error.detail);
+      }
+    }
     setOpenModal(false);
   };
 

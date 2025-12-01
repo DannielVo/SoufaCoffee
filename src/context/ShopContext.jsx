@@ -81,12 +81,14 @@ export const ShopContextProvider = ({ children }) => {
       const data = await apiRequest("staff", "/staffs", {
         method: "POST",
         body: JSON.stringify({
-          full_name: user.fullName,
+          full_name: user.full_name,
           email: user.email,
-          phone_number: user.phoneNumber,
+          phone_number: user.phone_number,
           role: user.role,
         }),
       });
+      getListUser();
+
       // data: {message, staff_id, initial_password}
       return data;
     } catch (err) {

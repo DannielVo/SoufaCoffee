@@ -16,7 +16,7 @@ const StaffModal = ({
     email: "",
     password: "",
     phone: "",
-    role: "staff",
+    role: "cashier",
     status: "active",
   });
 
@@ -28,7 +28,7 @@ const StaffModal = ({
         email: initialData.email || "",
         password: "",
         phone: initialData.phone_number || "",
-        role: initialData.role || "staff",
+        role: initialData.role || "cashier",
         status: initialData.status || "active",
       });
     }
@@ -117,7 +117,6 @@ const StaffModal = ({
             value={formData.role}
             onChange={(e) => handleChange("role", e.target.value)}
           >
-            <option value="staff">Staff</option>
             <option value="cashier">Cashier</option>
             <option value="barista">Barista</option>
             <option value="manager">Manager</option>
