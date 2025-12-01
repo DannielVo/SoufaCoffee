@@ -1,35 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./staffContent.css";
 import { STAFF_LIST } from "../../assets/dummyDB";
 import StatusDropdown from "../statusDropdown/StatusDropdown";
 import { STAFF_COLOR, STAFF_STATUS } from "../../assets/assets";
 import StaffModal from "../modals/staffModal/StaffModal";
+import { useShop } from "../../context/ShopContext";
 
 const StaffContent = () => {
-  const [staffList, setStaffList] = useState(STAFF_LIST);
+  const {
+    listUser,
+    getListUser,
+    createUser,
+    updateUser,
+    deleteUser,
+    error,
+    loading,
+  } = useShop();
 
+  const [staffList, setStaffList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [editData, setEditData] = useState(null);
 
   const handleSubmit = () => {
-    // if (editData) {
-    //   setStaffList((prev) =>
-    //     prev.map((s) => (s.id === editData.id ? { ...s, ...data } : s))
-    //   );
-    // } else {
-    //   const newStaff = {
-    //     id: staffList.length + 1,
-    //     name: data.name,
-    //     email: data.email,
-    //     phone: data.phone || "",
-    //     role: data.role,
-    //     status: data.status,
-    //   };
-    //   setStaffList((prev) => [...prev, newStaff]);
-    // }
-
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getListUser();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setStaffList([...listUser]);
+  }, [listUser]);
 
   return (
     <>
@@ -73,10 +78,14 @@ const StaffContent = () => {
           {/* List items */}
           {staffList.map((staff, index) => (
             <div className="staff-grid item" key={`staff-${staff.id}`}>
-              <div>{staff.id}</div>
-              <div>{staff.name}</div>
+              <div>
+                {staff.staff_id.length > 5
+                  ? staff.staff_id.slice(0, 5) + "xxx"
+                  : staff.staff_id}
+              </div>
+              <div>{staff.full_name}</div>
               <div>{staff.email}</div>
-              <div>{staff.phone}</div>
+              <div>{staff.phone_number}</div>
               <div>{staff.role}</div>
               {/* <div className={`status ${staff.status.toLowerCase()}`}>
               {staff.status}
@@ -89,7 +98,9 @@ const StaffContent = () => {
                 onChange={(newStatus) => {
                   setStaffList((prev) =>
                     prev.map((s) =>
-                      s.id === staff.id ? { ...s, status: newStatus } : s
+                      s.staff_id === staff.staff_id
+                        ? { ...s, status: newStatus }
+                        : s
                     )
                   );
                 }}

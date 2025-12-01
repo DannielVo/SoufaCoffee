@@ -158,6 +158,7 @@ export const ShopContextProvider = ({ children }) => {
         updateUser,
         deleteUser,
         user,
+        listUser,
       }}
     >
       {children}

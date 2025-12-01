@@ -51,7 +51,7 @@ export const DASHBOARD_SIDEBAR_KEY = [
 
 export const ORDER_STATUS = ["Pending", "In-progress", "Done"];
 
-export const STAFF_STATUS = ["Active", "Inactive"];
+export const STAFF_STATUS = ["active", "inactive"];
 
 export const STAFF_COLOR = {
   Active: "active",
