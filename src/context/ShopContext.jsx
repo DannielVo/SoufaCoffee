@@ -108,6 +108,7 @@ export const ShopContextProvider = ({ children }) => {
       // Lưu token vào localStorage để dùng cho các request sau
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("role", data.user.role);
 
       return data;
     } catch (err) {
@@ -124,6 +125,7 @@ export const ShopContextProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("role");
   };
 
   //   useEffect(() => {
