@@ -27,6 +27,27 @@ export const ShopContextProvider = ({ children }) => {
     }
   };
 
+  const updateUserProfile = async (userId, user) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await apiRequest("staff", "/profile/" + userId, {
+        method: "PUT",
+        body: JSON.stringify({
+          full_name: user.fullName,
+          phone_number: user.phoneNumber,
+        }),
+      });
+      // data: {message}
+      return data;
+    } catch (err) {
+      setError(err.detail);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const updateUser = async (userId, user) => {
     setLoading(true);
     setError(null);

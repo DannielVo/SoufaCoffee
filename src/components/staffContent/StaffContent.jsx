@@ -21,6 +21,15 @@ const StaffContent = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editData, setEditData] = useState(null);
 
+  const handleUpdateStaff = async (user) => {
+    try {
+      await updateUser(user.staff_id, user);
+      alert("Update status successfully!");
+    } catch (error) {
+      alert(error.detail);
+    }
+  };
+
   const handleSubmit = () => {
     setOpenModal(false);
   };
@@ -116,7 +125,10 @@ const StaffContent = () => {
                 >
                   <i className="bx bx-edit"></i>
                 </button>
-                <button className="btn-icon save">
+                <button
+                  onClick={() => handleUpdateStaff(staff)}
+                  className="btn-icon save"
+                >
                   <i class="bxr  bx-save"></i>
                 </button>
               </div>
