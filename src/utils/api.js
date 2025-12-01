@@ -2,7 +2,10 @@
 import axios from "axios";
 
 export const SERVICES = {
-  customer: "http://localhost:5000/api",
+  staff: "http://localhost:5000/api/staff-service",
+  order: "http://localhost:5000/api/order-service",
+  product: "http://localhost:5000/api/product-service",
+  preparation: "http://localhost:5000/api/preparation-service",
 };
 
 // Hàm chung gọi API

@@ -5,26 +5,86 @@ import { apiRequest } from "../utils/api";
 const ShopContext = createContext();
 
 export const ShopContextProvider = ({ children }) => {
-  const [customerId, setCustomerId] = useState(0);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
+  const [listUser, setListUser] = useState([]);
 
-  // Lấy thtin account của user login
-  const fetchAccountInfo = async (customerId) => {
-    if (customerId === 0) {
-      return;
-    }
+  const deleteUser = async (userId) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await apiRequest("account", "/" + customerId, {
+      const data = await apiRequest("staff", "/staffs/" + userId, {
+        method: "DELETE",
+      });
+      return data;
+    } catch (err) {
+      setError(err.detail);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateUser = async (userId, user) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await apiRequest("staff", "/staffs/" + userId, {
+        method: "PUT",
+        body: JSON.stringify({
+          full_name: user.fullName,
+          phone_number: user.phoneNumber,
+          role: user.role,
+          status: user.status,
+          email: user.email,
+        }),
+      });
+      // data: {message}
+      return data;
+    } catch (err) {
+      setError(err.detail);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createUser = async (user) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await apiRequest("staff", "/staffs", {
+        method: "POST",
+        body: JSON.stringify({
+          full_name: user.fullName,
+          email: user.email,
+          phone_number: user.phoneNumber,
+          role: user.role,
+        }),
+      });
+      // data: {message, staff_id, initial_password}
+      return data;
+    } catch (err) {
+      setError(err.detail);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getListUser = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await apiRequest("staff", "/staffs", {
         method: "GET",
       });
-      setAccount(data);
-      localStorage.setItem("account", JSON.stringify(data));
+      setListUser(data);
+      return data;
     } catch (err) {
-      setError(err.message);
+      setError(err.detail);
       throw err;
     } finally {
       setLoading(false);
@@ -36,17 +96,18 @@ export const ShopContextProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await apiRequest("auth", "/login", {
+      const data = await apiRequest("staff", "/login", {
         method: "POST",
-        body: JSON.stringify({ username: email, password: password }),
+        body: JSON.stringify({ email: email, password: password }),
       });
 
       // Giả sử API trả về token và user info
       setToken(data.access_token);
-      setCustomerId(data.customerId);
+      setUser(data.user);
 
       // Lưu token vào localStorage để dùng cho các request sau
       localStorage.setItem("token", data.access_token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       return data;
     } catch (err) {
@@ -60,10 +121,9 @@ export const ShopContextProvider = ({ children }) => {
   // Logout
   const logout = () => {
     setToken(null);
-    setCustomerId(0);
+    setUser(null);
     localStorage.removeItem("token");
-    localStorage.removeItem("customer");
-    localStorage.removeItem("account");
+    localStorage.removeItem("user");
   };
 
   //   useEffect(() => {
@@ -71,32 +131,31 @@ export const ShopContextProvider = ({ children }) => {
   //     fetchAccountInfo(customerId);
   //   }, [customerId]);
 
-  //   useEffect(() => {
-  //     const token = localStorage.getItem("token");
-  //     const customer = localStorage.getItem("customer");
-  //     const account = localStorage.getItem("account");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
 
-  //     if (token) {
-  //       setToken(token);
-  //       if (customer) {
-  //         setCustomer(JSON.parse(customer));
-  //         setCustomerId(JSON.parse(customer).customer_id);
-  //       }
-  //       if (account) {
-  //         setAccount(JSON.parse(account));
-  //       }
-  //     }
-  //   }, []);
+    if (token) {
+      setToken(token);
+      if (user) {
+        setUser(JSON.parse(user));
+      }
+    }
+  }, []);
 
   return (
     <ShopContext.Provider
       value={{
-        customerId,
         token,
         loading,
         error,
         login,
         logout,
+        getListUser,
+        createUser,
+        updateUser,
+        deleteUser,
+        user,
       }}
     >
       {children}
