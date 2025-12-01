@@ -24,10 +24,10 @@ const StaffModal = ({
   useEffect(() => {
     if (isEdit && initialData) {
       setFormData({
-        fullName: initialData.name || "",
+        fullName: initialData.full_name || "",
         email: initialData.email || "",
         password: "",
-        phone: initialData.phone || "",
+        phone: initialData.phone_number || "",
         role: initialData.role || "staff",
         status: initialData.status || "active",
       });
@@ -39,7 +39,20 @@ const StaffModal = ({
   };
 
   const handleSubmit = () => {
-    onSubmit(formData);
+    const override = {
+      full_name: formData.fullName,
+      email: formData.email,
+      phone_number: formData.phone,
+      role: formData.role,
+      status: formData.status,
+    };
+
+    const finalData = {
+      ...initialData,
+      ...override,
+    };
+
+    onSubmit(finalData);
   };
 
   return (
@@ -72,7 +85,7 @@ const StaffModal = ({
         </div>
 
         {/* Password => Chỉ có ở Add */}
-        {!isEdit && (
+        {/* {!isEdit && (
           <div className="form-group">
             <label>Password</label>
             <input
@@ -82,7 +95,7 @@ const StaffModal = ({
               placeholder="Enter password"
             />
           </div>
-        )}
+        )} */}
 
         {/* Phone => Chỉ có ở Edit */}
         {isEdit && (

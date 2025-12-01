@@ -55,13 +55,15 @@ export const ShopContextProvider = ({ children }) => {
       const data = await apiRequest("staff", "/staffs/" + userId, {
         method: "PUT",
         body: JSON.stringify({
-          full_name: user.fullName,
-          phone_number: user.phoneNumber,
+          full_name: user.full_name,
+          phone_number: user.phone_number,
           role: user.role,
           status: user.status,
           email: user.email,
         }),
       });
+
+      getListUser();
       // data: {message}
       return data;
     } catch (err) {

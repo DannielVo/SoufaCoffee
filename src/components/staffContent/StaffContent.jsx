@@ -30,7 +30,8 @@ const StaffContent = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (data) => {
+    handleUpdateStaff(data);
     setOpenModal(false);
   };
 
@@ -156,7 +157,7 @@ const StaffContent = () => {
         mode={editData ? "edit" : "add"}
         initialData={editData}
         onClose={() => setOpenModal(false)}
-        onSubmit={(data) => handleSubmit()}
+        onSubmit={(data) => handleSubmit(data)}
       />
     </>
   );
