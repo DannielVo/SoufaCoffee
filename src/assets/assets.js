@@ -58,7 +58,7 @@ export const STAFF_COLOR = {
   Inactive: "inactive",
 };
 
-export const PRODUCT_STATUS = ["Active", "Inactive"];
+export const PRODUCT_STATUS = ["active", "inactive"];
 
 export const PRODUCT_COLOR = {
   Active: "active",

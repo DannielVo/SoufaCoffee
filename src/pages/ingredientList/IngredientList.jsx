@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ingredientList.css";
 import { INGREDIENT_LIST } from "../../assets/dummyDB";
 import IngredientModal from "../../components/modals/ingredientModal/IngredientModal";
+import { useShop } from "../../context/ShopContext";
 
 const IngredientList = ({ isManager = false }) => {
+  const {
+    ingredients,
+    getIngredients,
+    getIngredientById,
+    createIngredient,
+    updateIngredient,
+    deleteIngredient,
+    updateIngredientStatus,
+    error,
+    loading,
+  } = useShop();
   const [openModal, setOpenModal] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [ingredientList, setIngredientList] = useState([]);
 
   const handleSubmit = () => {
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getIngredients();
+        setIngredientList(data);
+      } catch (err) {
+        console.error("Failed to fetch ingredients", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -54,10 +80,13 @@ const IngredientList = ({ isManager = false }) => {
           </div>
 
           {/* List items */}
-          {INGREDIENT_LIST.map((item, index) => (
-            <div className="ingredient-grid item" key={`ingredient-${item.id}`}>
+          {ingredientList.map((item, index) => (
+            <div
+              className="ingredient-grid item"
+              key={`ingredient-${item.ingredientId}`}
+            >
               <div>{index + 1}</div>
-              <div>{item.name}</div>
+              <div>{item.ingredientName}</div>
               <div className={`status ${item.status.toLowerCase()}`}>
                 {item.status}
               </div>
@@ -84,7 +113,7 @@ const IngredientList = ({ isManager = false }) => {
           {/* List-footer */}
           <div className="ingredient-list-footer">
             <div className="footer-left">
-              Total: {INGREDIENT_LIST.length} ingredients
+              Total: {ingredientList.length} ingredients
             </div>
 
             <div className="footer-right">

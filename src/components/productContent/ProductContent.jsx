@@ -1,16 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./productContent.css";
 import { PRODUCTS } from "../../assets/dummyDB";
 import StatusDropdown from "../statusDropdown/StatusDropdown";
 import { PRODUCT_COLOR, PRODUCT_STATUS } from "../../assets/assets";
 import ProductModal from "../modals/productModal/ProductModal";
+import { useShop } from "../../context/ShopContext";
 
 const ProductContent = () => {
-  const [productList, setProductList] = useState(PRODUCTS);
+  const {
+    products,
+    getProducts,
+    searchProducts,
+    getProductById,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+    error,
+    loading,
+  } = useShop();
+  const [productList, setProductList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [editData, setEditData] = useState(null);
 
-  const handleSubmit = () => {
+  const handleUpdateProduct = async (product) => {
+    try {
+      await updateProduct(product.productId, product);
+      alert("Update product successfully!");
+    } catch (error) {
+      alert(error.detail);
+    }
+  };
+
+  const handleSubmit = async (data) => {
+    if (editData) {
+      handleUpdateProduct(data);
+    } else {
+      try {
+        await createProduct(data);
+        alert("Create product successfully!");
+      } catch (error) {
+        alert(error.detail);
+      }
+    }
     setOpenModal(false);
   };
 
@@ -21,6 +52,17 @@ const ProductContent = () => {
       currencyDisplay: "code",
     }).format(price);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getProducts();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setProductList([...products]);
+  }, [products]);
 
   return (
     <>
@@ -53,7 +95,7 @@ const ProductContent = () => {
             <div>No.</div>
             <div>Product</div>
             <div>Price</div>
-            <div>Reamaining</div>
+            <div>Remaining</div>
             <div className="status-col">
               Status<i class="bx bxs-hand-up"></i>{" "}
             </div>
@@ -62,10 +104,13 @@ const ProductContent = () => {
 
           {/* List items */}
           {productList.map((product, index) => (
-            <div className="product-grid item" key={`product-${product.id}`}>
-              <div>{product.id}</div>
-              <div>{product.name}</div>
-              <div>{formatPrice(product.price)}</div>
+            <div
+              className="product-grid item"
+              key={`product-${product.productId}`}
+            >
+              <div>{product.productId}</div>
+              <div>{product.productName}</div>
+              <div>{formatPrice(product.productPrice)}</div>
               <div>{product.remaining}</div>
               <StatusDropdown
                 value={product.status}
@@ -74,7 +119,9 @@ const ProductContent = () => {
                 onChange={(newStatus) => {
                   setProductList((prev) =>
                     prev.map((p) =>
-                      p.id === product.id ? { ...p, status: newStatus } : p
+                      p.productId === product.productId
+                        ? { ...p, status: newStatus }
+                        : p
                     )
                   );
                 }}
@@ -89,7 +136,10 @@ const ProductContent = () => {
                 >
                   <i className="bx bx-edit"></i>
                 </button>
-                <button className="btn-icon save">
+                <button
+                  onClick={() => handleUpdateProduct(product)}
+                  className="btn-icon save"
+                >
                   <i class="bxr  bx-save"></i>
                 </button>
               </div>
@@ -118,7 +168,7 @@ const ProductContent = () => {
         mode={editData ? "edit" : "add"}
         initialData={editData}
         onClose={() => setOpenModal(false)}
-        onSubmit={(data) => handleSubmit()}
+        onSubmit={(data) => handleSubmit(data)}
       />
     </>
   );

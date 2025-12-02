@@ -36,7 +36,7 @@ const StaffContent = () => {
     } else {
       try {
         await createUser(data);
-        alert("Create status successfully!");
+        alert("Create user successfully!");
       } catch (error) {
         alert(error.detail);
       }

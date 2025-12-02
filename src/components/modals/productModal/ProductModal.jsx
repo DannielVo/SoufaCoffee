@@ -14,34 +14,39 @@ const ProductModal = ({
   // Form state
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
-  const [status, setStatus] = useState(isEdit ? "Active" : "Inactive");
+  const [status, setStatus] = useState(isEdit ? "active" : "inactive");
   const [desc, setDesc] = useState("");
 
   // Load initial data for editing
   useEffect(() => {
     if (isEdit && initialData) {
-      setProductName(initialData.name || "");
-      setPrice(initialData.price || "");
-      setStatus(initialData.status || "Active");
-      setDesc(initialData.description || "");
+      setProductName(initialData.productName || "");
+      setPrice(initialData.productPrice || "");
+      setStatus(initialData.status || "active");
+      setDesc(initialData.productDesc || "");
     } else {
       // Reset for Add
       setProductName("");
       setPrice("");
-      setStatus("Inactive");
+      setStatus("active");
       setDesc("");
     }
   }, [initialData, isEdit]);
 
   const handleSubmit = () => {
-    const formData = {
-      name: productName,
-      price: Number(price),
+    const override = {
+      productName: productName,
+      productPrice: Number(price),
       status,
-      description: desc,
+      productDescription: desc,
     };
 
-    onSubmit(formData);
+    const finalData = {
+      ...initialData,
+      ...override,
+    };
+
+    onSubmit(finalData);
   };
 
   return (
@@ -78,19 +83,15 @@ const ProductModal = ({
         </div>
 
         {/* Status */}
-        <div className="form-group">
-          <label>Status</label>
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            {isEdit ? (
-              <>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-              </>
-            ) : (
-              <option value="Inactive">Inactive</option>
-            )}
-          </select>
-        </div>
+        {isEdit && (
+          <div className="form-group">
+            <label>Status</label>
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        )}
 
         {/* Description */}
         <div className="form-group">
