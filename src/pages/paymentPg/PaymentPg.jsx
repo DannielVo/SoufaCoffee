@@ -3,19 +3,35 @@ import "./paymentPg.css";
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { ORDER_PAYMENT } from "../../assets/dummyDB";
+import { useShop } from "../../context/ShopContext";
+
+const PAYMENT_METHOD_CASH = "cash";
+const PAYMENT_METHOD_EWALLET = "eWallet";
 
 const PaymentPg = () => {
+  const {
+    orderId,
+    cartItems,
+    error,
+    loading,
+    totalAmount,
+    processOrderPayment,
+  } = useShop();
   const navigate = useNavigate();
-  const [method, setMethod] = useState("cash");
-  const [cashReceived, setCashReceived] = useState("");
-  const orderId = 101;
+  const [method, setMethod] = useState(PAYMENT_METHOD_CASH);
+  const [cashReceived, setCashReceived] = useState(0);
+
+  const handleProcessPayment = async () => {
+    await processOrderPayment(method, cashReceived);
+    alert("Create order successfull");
+  };
 
   const total = ORDER_PAYMENT.reduce(
     (sum, item) => sum + item.price * item.qty,
     0
   );
 
-  const cashReturned = cashReceived ? Number(cashReceived) - total : "";
+  const cashReturned = cashReceived ? Number(cashReceived) - totalAmount : "";
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -41,19 +57,19 @@ const PaymentPg = () => {
             <div>Total</div>
           </div>
 
-          {ORDER_PAYMENT.map((item, index) => (
-            <div className="order-summary-grid row" key={item.id}>
+          {cartItems.map((item, index) => (
+            <div className="order-summary-grid row" key={item.productId}>
               <div>{index + 1}</div>
-              <div>{item.name}</div>
-              <div>{formatPrice(item.price)}</div>
-              <div>{item.qty}</div>
-              <div>{formatPrice(item.price * item.qty)}</div>
+              <div>{item.productName}</div>
+              <div>{formatPrice(item.productPrice)}</div>
+              <div>{item.quantity}</div>
+              <div>{formatPrice(item.productPrice * item.quantity)}</div>
             </div>
           ))}
 
           <div className="summary-total">
             <span>Total Amount:</span>
-            <span className="total-value">{formatPrice(total)}</span>
+            <span className="total-value">{formatPrice(totalAmount)}</span>
           </div>
         </div>
 
@@ -64,13 +80,13 @@ const PaymentPg = () => {
           <div className="payment-tabs">
             <button
               className={method === "cash" ? "active" : ""}
-              onClick={() => setMethod("cash")}
+              onClick={() => setMethod(PAYMENT_METHOD_CASH)}
             >
               Cash
             </button>
             <button
               className={method === "ewallet" ? "active" : ""}
-              onClick={() => setMethod("ewallet")}
+              onClick={() => setMethod(PAYMENT_METHOD_EWALLET)}
             >
               E-wallet
             </button>
@@ -110,7 +126,12 @@ const PaymentPg = () => {
           </div>
 
           <div className="payment-actions">
-            <button className="btn-confirm">Confirm</button>
+            <button
+              onClick={() => handleProcessPayment()}
+              className="btn-confirm"
+            >
+              {loading ? "Confirm...." : "Confirm"}
+            </button>
             <button
               className="btn-update-order"
               onClick={() => navigate("/cashier/home")}

@@ -23,6 +23,7 @@ export const ShopContextProvider = ({ children }) => {
 
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [orderId, setOrderId] = useState(0);
 
   // ===== CART  ====================================================
   // Hàm tính tổng tiền
@@ -69,6 +70,58 @@ export const ShopContextProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartItems([]);
+  };
+
+  const processOrderPayment = async ({
+    paymentMethod = "cash",
+    cashGiven = 0, // chỉ dùng nếu paymentMethod = "cash"
+  }) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      if (!orderId) throw new Error("Order ID is required");
+
+      // Tạo payment
+      const paymentPayload = {
+        orderId,
+        paymentMethod,
+        cashGiven,
+        amount: totalAmount,
+      };
+
+      const payment = await createPayment(paymentPayload);
+      if (!payment) throw new Error("Failed to create payment");
+      const paymentId = payment.paymentId; // tùy backend trả về key gì
+
+      // Thêm từng item vào order
+      for (const item of cartItems) {
+        const added = await addOrderItem({
+          orderId,
+          productId: item.productId,
+          quantity: item.quantity,
+        });
+        if (!added) {
+          throw new Error(`Failed to add product ${item.productId} to order`);
+        }
+      }
+
+      // Cập nhật trạng thái payment thành success
+      const updatedPayment = await updatePaymentStatus(paymentId, {
+        transactionStatus: "success",
+      });
+      if (!updatedPayment) throw new Error("Failed to update payment status");
+
+      return {
+        payment: updatedPayment,
+        itemsAdded: cartItems.length,
+      };
+    } catch (err) {
+      setError(err.message || "Failed to process order payment");
+      throw err;
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Auto update khi cartItems thay đổi
@@ -308,6 +361,7 @@ export const ShopContextProvider = ({ children }) => {
         body: JSON.stringify(body),
       });
 
+      setOrderId(data.orderId);
       // data: OrderBase
       return data;
     } catch (err) {
@@ -1196,6 +1250,8 @@ export const ShopContextProvider = ({ children }) => {
         clearCart,
         cartItems,
         totalAmount,
+        orderId,
+        processOrderPayment,
       }}
     >
       {children}

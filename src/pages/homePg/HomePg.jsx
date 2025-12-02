@@ -18,10 +18,16 @@ const HomePg = () => {
     clearCart,
     cartItems,
     totalAmount,
+    createOrder,
   } = useShop();
   const [productList, setProductList] = useState([]);
   const [orderItem, setOrderItem] = useState(ORDER_SUMMARY);
   const navigate = useNavigate();
+
+  const handleCreateOrder = async () => {
+    await createOrder();
+    navigate("/cashier/payment");
+  };
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -86,7 +92,7 @@ const HomePg = () => {
       <div className="order-summary-wrapper">
         <div className="order-summary">
           <div className="summary-header">
-            <h2 className="summary-title">Order #101</h2>
+            <h2 className="summary-title">Order Summary</h2>
             {/* <button className="btn-clear-all">Clear All</button> */}
             <a onClick={() => clearCart()} className="btn-clear-all">
               Clear All
@@ -134,11 +140,8 @@ const HomePg = () => {
             </div>
           </div>
 
-          <button
-            className="btn-process"
-            onClick={() => navigate("/cashier/payment")}
-          >
-            Process Transaction
+          <button className="btn-process" onClick={() => handleCreateOrder()}>
+            {loading ? " Process Transaction...." : " Process Transaction"}
           </button>
         </div>
       </div>
