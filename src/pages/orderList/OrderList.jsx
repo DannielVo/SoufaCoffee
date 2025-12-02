@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./orderList.css";
 import { useNavigate } from "react-router-dom";
 import { ORDER_LIST } from "../../assets/dummyDB";
 import OrderDetails from "../orderDetails/OrderDetails";
+import { useShop } from "../../context/ShopContext";
 
 const OrderList = ({ isManager = false }) => {
+  const { listOrder, error, loading, getOrders } = useShop();
   const [isOrderDetails, setIsOrderDetails] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [orders, setOrders] = useState([]);
 
   const handleSelectedOrder = (item) => {
     setSelectedOrder(item);
@@ -22,6 +25,17 @@ const OrderList = ({ isManager = false }) => {
       currencyDisplay: "code",
     }).format(price);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getOrders();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setOrders([...listOrder]);
+  }, [listOrder]);
 
   return (
     <>
@@ -56,14 +70,14 @@ const OrderList = ({ isManager = false }) => {
             </div>
 
             {/* List items */}
-            {ORDER_LIST.map((order, index) => (
-              <div className="order-grid item" key={order.id}>
+            {orders.map((order, index) => (
+              <div className="order-grid item" key={order.orderId}>
                 <div>{index + 1}</div>
-                <div>#{order.id}</div>
-                <div>{formatPrice(order.total)}</div>
-                <div>{order.created_at}</div>
-                <div className={`status ${order.status.toLowerCase()}`}>
-                  {order.status}
+                <div>#{order.orderId}</div>
+                <div>{formatPrice(order.totalAmount)}</div>
+                <div>{order.createdAt}</div>
+                <div className={`status ${order.orderStatus.toLowerCase()}`}>
+                  {order.orderStatus}
                 </div>
                 <div className="actions">
                   <button
@@ -76,7 +90,7 @@ const OrderList = ({ isManager = false }) => {
                   </button>
                   <button
                     className="btn-icon edit"
-                    onClick={() => navigate(`/orders/${order.id}/edit`)}
+                    onClick={() => navigate(`/orders/${order.orderId}/edit`)}
                   >
                     <i className="bx bx-edit"></i>
                   </button>
@@ -86,9 +100,7 @@ const OrderList = ({ isManager = false }) => {
 
             {/* List-footer */}
             <div className="order-list-footer">
-              <div className="footer-left">
-                Total: {ORDER_LIST.length} orders
-              </div>
+              <div className="footer-left">Total: {orders.length} orders</div>
 
               <div className="footer-right">
                 <button className="page-btn" disabled={true}>

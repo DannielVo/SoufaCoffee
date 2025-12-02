@@ -24,6 +24,7 @@ export const ShopContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [orderId, setOrderId] = useState(0);
+  const [listOrder, setListOrder] = useState([]);
 
   // ===== CART  ====================================================
   // Hàm tính tổng tiền
@@ -317,7 +318,7 @@ export const ShopContextProvider = ({ children }) => {
       const data = await apiRequest("order", "/orders", {
         method: "GET",
       });
-
+      setListOrder(data);
       // data: OrderBase[]
       return data;
     } catch (err) {
@@ -1228,6 +1229,7 @@ export const ShopContextProvider = ({ children }) => {
         getOrderDetail,
         getOrders,
         deleteOrder,
+        listOrder,
 
         // order items functions
         getOrderItems,
