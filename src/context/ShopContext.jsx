@@ -25,6 +25,7 @@ export const ShopContextProvider = ({ children }) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [orderId, setOrderId] = useState(0);
   const [listOrder, setListOrder] = useState([]);
+  const [listPreparation, setListPreparation] = useState([]);
 
   // ===== CART  ====================================================
   // Hàm tính tổng tiền
@@ -405,6 +406,7 @@ export const ShopContextProvider = ({ children }) => {
 
       const data = await apiRequest("preparation", url, { method: "GET" });
 
+      setListPreparation(data);
       // data: PreparationBase[]
       return data;
     } catch (err) {
@@ -1218,6 +1220,7 @@ export const ShopContextProvider = ({ children }) => {
         deleteProductIngredients,
 
         // prep functions
+        listPreparation,
         getPreparations,
         getPreparationDetail,
         getPrepItems,

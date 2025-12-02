@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./preparationList.css";
 import { useNavigate } from "react-router-dom";
 import { PREP_LIST } from "../../assets/dummyDB";
 import PrepDetails from "../prepDetails/PrepDetails";
 import StatusDropdown from "../../components/statusDropdown/StatusDropdown";
 import { PREP_COLOR, PREP_STATUS } from "../../assets/assets";
+import { useShop } from "../../context/ShopContext";
 
 const PreparationList = ({ isManager = false }) => {
+  const { listPreparation, error, loading, getPreparations } = useShop();
   const [isPrepDetails, setIsPrepDetails] = useState(false);
   const [selectedPrep, setSelectedPrep] = useState(null);
-  const [prepList, setPrepList] = useState(PREP_LIST);
+  const [prepList, setPrepList] = useState([]);
 
   const handleSelectedPrep = (item) => {
     setSelectedPrep(item);
@@ -17,6 +19,17 @@ const PreparationList = ({ isManager = false }) => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getPreparations();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setPrepList([...listPreparation]);
+  }, [listPreparation]);
 
   return (
     <>
@@ -32,8 +45,7 @@ const PreparationList = ({ isManager = false }) => {
             <div className="prep-grid header">
               <div>No.</div>
               <div>Preparation ID</div>
-              <div>Date</div>
-              <div>Last Edited By</div>
+              {/* <div>Last Edited By</div> */}
               <div className="status-col">
                 Status<i class="bx bxs-hand-up"></i>{" "}
               </div>
@@ -42,20 +54,21 @@ const PreparationList = ({ isManager = false }) => {
 
             {/* List items */}
             {prepList.map((prep, index) => (
-              <div className="prep-grid item" key={`prep-${prep.id}`}>
+              <div className="prep-grid item" key={`prep-${prep.prepId}`}>
                 <div>{index + 1}</div>
-                <div>#{prep.id}</div>
-                <div>{prep.created_at}</div>
-                <div>{prep.staff}</div>
+                <div>#{prep.prepId}</div>
+                {/* <div>{prep.staffId}</div> */}
 
                 <StatusDropdown
-                  value={prep.status}
+                  value={prep.prepStatus}
                   options={PREP_STATUS}
                   colorMap={PREP_COLOR}
                   onChange={(newStatus) => {
                     setPrepList((prev) =>
                       prev.map((p) =>
-                        p.id === prep.id ? { ...p, status: newStatus } : p
+                        p.prepId === prep.prepId
+                          ? { ...p, prepStatus: newStatus }
+                          : p
                       )
                     );
                   }}

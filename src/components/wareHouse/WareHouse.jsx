@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./wareHouse.css";
 import { INGREDIENT_LIST, WAREHOUSE_DATA } from "../../assets/dummyDB";
 import WareHouseModal from "../modals/wareHouseModal/WareHouseModal";
+import { useShop } from "../../context/ShopContext";
 
 const WareHouse = ({ data = [], isManager = false }) => {
+  const { getWarehouseItems, error, loading, warehouseItems } = useShop();
   const [openModal, setOpenModal] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [listWarehouseItem, setListWarehouseItem] = useState([]);
 
   const handleSubmit = () => {
     setOpenModal(false);
@@ -18,6 +21,17 @@ const WareHouse = ({ data = [], isManager = false }) => {
       currencyDisplay: "code",
     }).format(price);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getWarehouseItems();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setListWarehouseItem([...warehouseItems]);
+  }, [warehouseItems]);
 
   return (
     <>
@@ -65,7 +79,7 @@ const WareHouse = ({ data = [], isManager = false }) => {
               <div>Actions</div>
             </div>
 
-            {WAREHOUSE_DATA.map((item, index) => (
+            {listWarehouseItem.map((item, index) => (
               <div
                 className={`wh-table-row ${
                   isManager ? "grid-manager" : "grid-cashier"
@@ -73,15 +87,15 @@ const WareHouse = ({ data = [], isManager = false }) => {
                 key={`wh-${item.id}`}
               >
                 <div>{index + 1}</div>
-                <div>{item.name}</div>
-                <div>{item.stock_quantity}</div>
+                <div>{item.ingredientName}</div>
+                <div>{item.stockQuantity}</div>
                 <div>{formatPrice(item.price)}</div>
-                <div>{item.date_stock_in}</div>
+                <div>{item.dateStockIn}</div>
                 <div>{item.remaining}</div>
                 <div>{item.unit}</div>
 
-                {isManager && <div>{item.staff_add}</div>}
-                {isManager && <div>{item.last_edit}</div>}
+                {isManager && <div>{item.staffId}</div>}
+                {isManager && <div>{item.staffId}</div>}
 
                 <div>
                   <button
@@ -100,7 +114,7 @@ const WareHouse = ({ data = [], isManager = false }) => {
             {/* List-footer */}
             <div className="warehouse-list-footer">
               <div className="footer-left">
-                Total: {WAREHOUSE_DATA.length} records
+                Total: {listWarehouseItem.length} records
               </div>
 
               <div className="footer-right">
