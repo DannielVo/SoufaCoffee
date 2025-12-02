@@ -21,6 +21,61 @@ export const ShopContextProvider = ({ children }) => {
 
   const [revenue, setRevenue] = useState(null);
 
+  const [cartItems, setCartItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  // ===== CART  ====================================================
+  // Hàm tính tổng tiền
+  const calculateTotal = (items) => {
+    const sum = items.reduce(
+      (acc, item) => acc + item.productPrice * item.quantity,
+      0
+    );
+    setTotalAmount(sum);
+  };
+
+  // Thêm sản phẩm
+  const addToCart = (product) => {
+    setCartItems((prev) => {
+      const exists = prev.find((i) => i.productId === product.productId);
+
+      if (exists) {
+        return prev.map((i) =>
+          i.productId === product.productId
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
+        );
+      }
+
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems((prev) => prev.filter((item) => item.productId !== productId));
+  };
+
+  const decreaseQuantity = (productId) => {
+    setCartItems((prev) =>
+      prev
+        .map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  // Auto update khi cartItems thay đổi
+  useEffect(() => {
+    calculateTotal(cartItems);
+  }, [cartItems]);
+
   // ===== REVENUE ====================================================
   const getRevenue = async (fromDate = null, toDate = null) => {
     setLoading(true);
@@ -177,6 +232,30 @@ export const ShopContextProvider = ({ children }) => {
   };
 
   // ===== ORDERS  ====================================================
+  // Flow tạo order + add items
+  const createFullOrder = async (cartItems) => {
+    try {
+      // 1. Tạo order trước (totalAmount = 0)
+      const order = await createOrder(0);
+      const orderId = order.orderId; // backend trả về OrderBase => có orderId
+
+      // 2. Loop add từng item
+      for (const item of cartItems) {
+        await addOrderItem({
+          orderId: orderId,
+          productId: item.productId,
+          quantity: item.quantity,
+        });
+      }
+
+      // 3. Trả về orderId để điều hướng sang trang Payment / Order Detail
+      return orderId;
+    } catch (err) {
+      console.error("Error in createFullOrder:", err);
+      throw err;
+    }
+  };
+
   const getOrders = async () => {
     setLoading(true);
     setError(null);
@@ -1108,6 +1187,15 @@ export const ShopContextProvider = ({ children }) => {
         revenue,
         getRevenue,
         updateOrderStatus,
+
+        // Cart
+        calculateTotal,
+        addToCart,
+        removeFromCart,
+        decreaseQuantity,
+        clearCart,
+        cartItems,
+        totalAmount,
       }}
     >
       {children}

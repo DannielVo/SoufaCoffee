@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./homePg.css";
 import { ORDER_SUMMARY, PRODUCTS } from "../../assets/dummyDB";
 import ProductCard from "../../components/productCard/ProductCard";
 import { useNavigate } from "react-router-dom";
+import { useShop } from "../../context/ShopContext";
 
 const HomePg = () => {
+  const {
+    products,
+    getProducts,
+    error,
+    loading,
+    calculateTotal,
+    addToCart,
+    removeFromCart,
+    decreaseQuantity,
+    clearCart,
+    cartItems,
+    totalAmount,
+  } = useShop();
+  const [productList, setProductList] = useState([]);
   const [orderItem, setOrderItem] = useState(ORDER_SUMMARY);
   const navigate = useNavigate();
 
@@ -31,7 +46,8 @@ const HomePg = () => {
   };
 
   const handleRemoveItem = (id) => {
-    setOrderItem((prevItems) => prevItems.filter((item) => item.id !== id));
+    // setOrderItem((prevItems) => prevItems.filter((item) => item.id !== id));
+    removeFromCart(id);
   };
 
   const total = orderItem.reduce(
@@ -39,18 +55,29 @@ const HomePg = () => {
     0
   );
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await getProducts();
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setProductList([...products]);
+  }, [products]);
+
   return (
     <div className="home-wrapper left-right">
       {/* MENU */}
       <div className="menu-container">
-        {PRODUCTS.map((item, index) => (
+        {productList.map((item, index) => (
           <ProductCard
-            key={item.id}
-            img={item.img}
-            name={item.name}
-            price={formatPrice(item.price)}
-            remaining={item.remaining}
-            onChoose={() => console.log("Add:", item)}
+            key={item.productId}
+            img={item.productImg}
+            name={item.productName}
+            price={formatPrice(item.productPrice)}
+            remaining={item.numberOfAvailability}
+            onChoose={() => addToCart(item)}
           />
         ))}
       </div>
@@ -61,18 +88,22 @@ const HomePg = () => {
           <div className="summary-header">
             <h2 className="summary-title">Order #101</h2>
             {/* <button className="btn-clear-all">Clear All</button> */}
-            <a className="btn-clear-all">Clear All</a>
+            <a onClick={() => clearCart()} className="btn-clear-all">
+              Clear All
+            </a>
           </div>
 
           <div className="order-items">
-            {orderItem.map((item, index) => (
+            {cartItems.map((item, index) => (
               <div key={`order-summary-item${index}`} className="order-item">
                 <div className="item-info">
-                  <div className="item-name">{item.name}</div>
-                  <div className="item-price">{formatPrice(item.price)}</div>
+                  <div className="item-name">{item.productName}</div>
+                  <div className="item-price">
+                    {formatPrice(item.productPrice)}
+                  </div>
                   <button
                     className="btn-clear-item"
-                    onClick={() => handleRemoveItem(item.id)}
+                    onClick={() => removeFromCart(item.productId)}
                   >
                     Clear
                   </button>
@@ -80,16 +111,14 @@ const HomePg = () => {
                 <div className="item-controls">
                   <button
                     className="btn-quantity"
-                    onClick={() => handleQuantityChange(item.id, -1)}
-                    disabled={item.quantity === 1}
+                    onClick={() => decreaseQuantity(item.productId)}
                   >
                     -
                   </button>
                   <span className="quantity">{item.quantity}</span>
                   <button
                     className="btn-quantity"
-                    onClick={() => handleQuantityChange(item.id, 1)}
-                    disabled={item.quantity >= item.stock}
+                    onClick={() => addToCart(item)}
                   >
                     +
                   </button>
@@ -101,7 +130,7 @@ const HomePg = () => {
           <div className="order-totals">
             <div className="total-row total-amount">
               <span>Total:</span>
-              <span className="total-value">{formatPrice(total)}</span>
+              <span className="total-value">{formatPrice(totalAmount)}</span>
             </div>
           </div>
 
